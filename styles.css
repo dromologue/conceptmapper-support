@@ -17,7 +17,8 @@ img{max-width:100%;height:auto;display:block}
 
 .site-header{background:var(--panel);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10}
 .site-header .wrap{display:flex;align-items:center;justify-content:space-between;height:56px}
-.brand{font-weight:600;color:var(--ink);font-size:17px}
+.brand{font-weight:600;color:var(--ink);font-size:17px;display:inline-flex;align-items:center;gap:9px}
+.brand-icon{width:24px;height:24px;display:block}
 .site-header nav a{margin-left:20px;color:var(--muted);font-size:15px}
 .site-header nav a.on{color:var(--ink);font-weight:600}
 
@@ -25,6 +26,8 @@ img{max-width:100%;height:auto;display:block}
 .hero{background:radial-gradient(1200px 500px at 50% -10%,#1b2a4a 0%,var(--ink-deep) 60%);color:#fff;
   padding:64px 0 0;overflow:hidden}
 .hero-inner{text-align:center}
+.hero-icon{width:112px;height:112px;margin:0 auto 22px;display:block;
+  filter:drop-shadow(0 14px 28px rgba(0,0,0,.5))}
 .hero h1{font-size:52px;line-height:1.05;margin:0 0 18px;letter-spacing:-.02em}
 .hero .lede{max-width:64ch;margin:0 auto 26px;font-size:19px;color:#c9d2e3}
 .cta-row{display:flex;gap:16px;align-items:center;justify-content:center;flex-wrap:wrap;margin-bottom:40px}
