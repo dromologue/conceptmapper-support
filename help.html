@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Concept Mapper — Help & Support</title>
+<meta name="description" content="Concept Mapper — build, edit, and reason over typed concept maps on macOS. Plain-text maps, a separate schema, and graph analysis built in.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href="index.html">Concept Mapper</a>
+        <nav>
+          <a href="index.html">Overview</a>
+          <a href="help.html" class="on">Help &amp; Support</a>
+          <a href="privacy.html">Privacy</a>
+        </nav>
+      </div>
+    </header>
+<main class="wrap">
+
+    <section class="intro">
+      <h1>Concept Mapper — Help &amp; Support</h1>
+      <p>This page mirrors the in-app help. For anything not answered here, email <a href="mailto:dromologue@gmail.com">dromologue@gmail.com</a>.</p>
+      <input id="q" type="search" placeholder="Search help…" autocomplete="off" aria-label="Search help">
+      <p id="noresults" class="muted" hidden>No sections match your search.</p>
+    </section>
+    <div class="layout">
+      <nav class="toc" aria-label="Contents">
+        <p class="toc-title">Contents</p>
+        <ul><li><a href="#getting-started">Getting Started</a></li>
+<li><a href="#core-concepts">Core Concepts: Taxonomy, Template, and Map</a></li>
+<li><a href="#workspace-layout">The Workspace Layout</a></li>
+<li><a href="#activity-bar">Activity Bar: What Each Button Does</a></li>
+<li><a href="#nodes">Adding and Editing Nodes</a></li>
+<li><a href="#edges">Adding Edges (Relationships)</a></li>
+<li><a href="#taxonomy-wizard">The Taxonomy Wizard</a></li>
+<li><a href="#llm-mapping">Using an LLM to Map Content to a Template</a></li>
+<li><a href="#canvas-navigation">Canvas Navigation and Interaction</a></li>
+<li><a href="#sidebar-filtering">Sidebar: Explorer, Classifiers, Tags, and Filtering</a></li>
+<li><a href="#collapse-expand-level">Collapse and Expand to Level</a></li>
+<li><a href="#tags">Tags: Pills, Autocomplete, and the Sidebar List</a></li>
+<li><a href="#notes-editor">The Notes Editor</a></li>
+<li><a href="#view-modes">View Modes: Dynamic Filtered Views</a></li>
+<li><a href="#settings-themes">Settings: Themes and Colour Customisation</a></li>
+<li><a href="#file-formats">File Formats: .cm, .cmt, .json, and Markdown Export</a></li>
+<li><a href="#keyboard-shortcuts">Keyboard Shortcuts</a></li>
+<li><a href="#network-analysis">Network Analysis Tools</a></li>
+<li><a href="#faq">Frequently Asked Questions</a></li>
+<li><a href="#troubleshooting">Troubleshooting</a></li></ul>
+      </nav>
+      <div class="content">
+    <article class="section" id="getting-started" data-tags="new begin first intro start overview" data-title="getting started">
+      <h2>Getting Started <a class="anchor" href="#getting-started" aria-label="Link to section">#</a></h2>
+      <p>ConceptMapper is a visual concept-mapping tool for exploring relationships between thinkers, ideas, and concepts.</p>
+<p>When you first open the app you see the <strong>Start Screen</strong> with three options:</p>
+<ol><li><strong>New Taxonomy</strong> -- Opens a step-by-step wizard that walks you through defining your map's structure: a title, node types, categories (streams), and time periods (generations).</li></ol>
+<ol><li><strong>Open File</strong> -- Load an existing .cm or .json concept map file. You can also use File &gt; Open (Cmd+O) from the menu bar.</li></ol>
+<ol><li><strong>Map Text</strong> -- (Coming soon.) Use an external LLM to extract nodes and relationships into a taxonomy structure. See "Using an LLM to Map Content" in this help for the current workflow.</li></ol>
+<p>If you have previously saved templates, they appear below these buttons. Click one to start a new map pre-loaded with that template's structure.</p>
+<p><strong>Recommended first steps:</strong></p>
+<ul><li>Click "New Taxonomy" and follow the 6-step wizard.</li><li>Add a few nodes using the sidebar buttons.</li><li>Draw edges between nodes to define relationships.</li><li>Open Settings (gear icon) to choose a theme.</li></ul>
+    </article>
+
+    <article class="section" id="core-concepts" data-tags="taxonomy template map concept terminology vocabulary glossary classifier" data-title="core concepts: taxonomy, template, and map">
+      <h2>Core Concepts: Taxonomy, Template, and Map <a class="anchor" href="#core-concepts" aria-label="Link to section">#</a></h2>
+      <p>ConceptMapper uses a few key terms that are worth understanding upfront:</p>
+<p><strong>Taxonomy</strong> -- The structural skeleton of your concept map. It defines:</p>
+<ul><li>The node types you can create (e.g. Person, Concept, Theory)</li><li>The classifiers used to group nodes (e.g. domain, era, status)</li><li>The fields each node type carries</li><li>The edge types and how they look (colour, line style, directed/undirected)</li></ul>
+<p><strong>Template (.cmt)</strong> -- A reusable taxonomy structure without any actual nodes or edges. Stored as JSON. The template ALWAYS owns the structure — the map file never carries node-type or classifier definitions of its own. A .cm file references its template via an HTML comment header (<code>&lt;!-- template: foo.cmt --&gt;</code>).</p>
+<p><strong>Concept Map (.cm)</strong> -- A structured markdown file containing nodes, edges, and notes. Auto-saves to its source path as you work.</p>
+<p><strong>Classifier</strong> -- A generic grouping dimension defined in the template. Classifiers replace the older hardcoded "streams" and "generations" — they are completely generic, so the template author chooses both the dimensions (e.g. domain, era, status) and the allowed values. Every classifier appears as a filterable section in the sidebar.</p>
+<p><strong>Node Types</strong> -- The kinds of entities in your map. Each type has a shape (circle or rectangle), icon, colour, and field set. There are no built-in privileged types — everything comes from the template.</p>
+<p><strong>Edges</strong> -- Directed or undirected relationships. Edge types are defined in the template (label, colour, line style). Per-map colour overrides live in Settings.</p>
+<p><strong>Tags</strong> -- A free-form labelling system. Any node type can declare a <code>tags</code> field; values appear as pills with autocomplete drawn from tags already used in the map. Tags also surface as a filterable section in the sidebar.</p>
+    </article>
+
+    <article class="section" id="workspace-layout" data-tags="layout ui interface screen panel area" data-title="the workspace layout">
+      <h2>The Workspace Layout <a class="anchor" href="#workspace-layout" aria-label="Link to section">#</a></h2>
+      <p>The app follows a VS Code-inspired layout with five main areas:</p>
+<p><strong>Title Bar</strong> (top) -- Shows the map title and a search field. Use the search to find nodes by name (Cmd+K to focus).</p>
+<p><strong>Activity Bar</strong> (left edge, narrow icon strip) -- Vertical toolbar with view mode buttons at the top and settings/taxonomy at the bottom:</p>
+<ul><li>Network icon: Full view (all nodes)</li><li>Filtered view icons: One per node type defined in your taxonomy (dynamically generated, not hardcoded)</li><li>Sidebar icon: Toggle the sidebar panel</li><li>(Map Text and Chat icons will appear in a future release when built-in LLM support is enabled)</li><li>Help icon: Open the searchable help panel</li><li>Taxonomy icon (bottom): Edit the current taxonomy structure</li><li>Gear icon (bottom): Open Settings</li></ul>
+<p><strong>Sidebar</strong> (left panel) -- The Explorer panel showing:</p>
+<ul><li>Action buttons to add nodes (one per node type) and edges</li><li>A collapse/expand-to-level stepper (see "Collapse and Expand to Level")</li><li>One collapsible filter section per classifier defined in the template</li><li>A Tags section (open by default) when any node uses tags</li><li>A collapsible Nodes list with a filter/search box</li></ul>
+<p><strong>Canvas</strong> (centre) -- The main interactive graph visualization. Pan by dragging, zoom with scroll wheel or pinch, Shift+drag for marquee zoom.</p>
+<p><strong>Auxiliary Panel</strong> (right, appears when a node is selected) -- The Properties panel showing the selected node's attributes, with an inline name editor, classifier dropdowns, custom fields, tag pills with autocomplete, and a connections list. A resize handle between the canvas and this panel lets you adjust width.</p>
+<p><strong>Bottom Pane</strong> (below the canvas, when open):</p>
+<ul><li>Notes pane: Inline markdown editor for the selected node's notes</li></ul>
+    </article>
+
+    <article class="section" id="activity-bar" data-tags="toolbar button icon activity bar" data-title="activity bar: what each button does">
+      <h2>Activity Bar: What Each Button Does <a class="anchor" href="#activity-bar" aria-label="Link to section">#</a></h2>
+      <p>The Activity Bar is the narrow vertical strip on the far left. From top to bottom:</p>
+<p><strong>Top group:</strong></p>
+<ol><li><strong>Full Network</strong> (triangle/graph icon) -- Shows all nodes and edges. This is the default view.</li></ol>
+<ol><li><strong>Filtered Views</strong> -- One button per node type in your taxonomy. For example, if you have Person and Concept types, you get a People view and a Concepts view. These are generated dynamically from your taxonomy, not hardcoded.</li></ol>
+<ol><li><strong>Toggle Sidebar</strong> (panel icon) -- Shows or hides the left Explorer sidebar.</li></ol>
+<ol><li><strong>Help</strong> (question mark icon) -- Opens the searchable help panel overlay.</li></ol>
+<p><strong>Bottom group:</strong></p>
+<ol><li><strong>Edit Taxonomy</strong> (list icon) -- Re-opens the taxonomy wizard to modify the current map's structure (node types, categories, phases, edge types).</li></ol>
+<ol><li><strong>Settings</strong> (gear icon) -- Opens the Settings modal for theme, stream colours, and edge colours.</li></ol>
+    </article>
+
+    <article class="section" id="nodes" data-tags="node add edit create thinker concept person delete" data-title="adding and editing nodes">
+      <h2>Adding and Editing Nodes <a class="anchor" href="#nodes" aria-label="Link to section">#</a></h2>
+      <p><strong>Adding a node:</strong></p>
+<ol><li>In the sidebar, click the "+ [Type]" button for the node type you want (e.g. "+ Person", "+ Concept").</li><li>A modal appears asking for:</li></ol>
+<p>   - Type (if multiple types are defined)<br>   - Name (required)<br>   - Stream (category)<br>   - Generation (time period)<br>   - Any required or select-type custom fields</p>
+<ol><li>Click "Add" to place the node on the canvas.</li></ol>
+<p>The node is automatically selected after creation so you can immediately edit its properties.</p>
+<p><strong>Editing a node:</strong></p>
+<ol><li>Click a node on the canvas or in the sidebar node list.</li><li>The Properties panel opens on the right.</li><li>Edit the name directly in the header input field.</li><li>Change the stream or generation using the dropdown selectors.</li><li>Edit any custom fields defined by your taxonomy (text inputs, selects, textareas).</li><li>Changes auto-save with a short debounce delay.</li></ol>
+<p><strong>Node notes:</strong><br>Click "Edit Notes" in the Properties panel header to open the Notes pane below the canvas. This is a live markdown editor -- type headings (#), bold (<strong>text</strong>), italic (<em>text</em>), code (<code>text</code>), lists (- item), and blockquotes (&gt; text). Notes auto-save.</p>
+<p><strong>Tip:</strong> The node type badge in the Properties header shows whether a node is a circle type (thinker) or rectangle type (concept). Node size can be driven by a select field if configured in the taxonomy (e.g. eminence controls circle size).</p>
+    </article>
+
+    <article class="section" id="edges" data-tags="edge relationship connection link draw add" data-title="adding edges (relationships)">
+      <h2>Adding Edges (Relationships) <a class="anchor" href="#edges" aria-label="Link to section">#</a></h2>
+      <p>Edges represent relationships between nodes. To add an edge:</p>
+<ol><li>Click the <strong>"+ Edge"</strong> button in the sidebar (or enter edge-drawing mode).</li><li>The status bar shows "Click source node" -- click the first node on the canvas.</li><li>The status bar changes to "Click target node" -- click the second node.</li><li>A modal appears showing the available relationship types for this pair.</li><li>Select a type and click "Add Edge".</li></ol>
+<p>Press <strong>Escape</strong> at any time to cancel edge drawing.</p>
+<p><strong>Edge types depend on what you are connecting:</strong></p>
+<p><em>Thinker-to-Thinker:</em></p>
+<ul><li>Teacher -&gt; Pupil, Chain, Rivalry, Alliance, Synthesis, Institutional</li></ul>
+<p><em>Thinker-to-Concept:</em></p>
+<ul><li>Originates, Develops, Contests, Applies</li></ul>
+<p><em>Concept-to-Concept:</em></p>
+<ul><li>Extends, Opposes, Subsumes, Enables, Reframes</li></ul>
+<p><strong>Visual styles:</strong></p>
+<ul><li>Solid lines with arrows: directed relationships (teacher-&gt;pupil, originates, etc.)</li><li>Dashed lines (red): rivalry, opposes</li><li>Dotted lines (grey): alliance, institutional</li></ul>
+<p><strong>Viewing connections:</strong><br>When a node is selected, its connections appear in the "Connections" section of the Properties panel. Click any connected node's name to navigate to it.</p>
+    </article>
+
+    <article class="section" id="taxonomy-wizard" data-tags="taxonomy wizard create new define setup node type classifier" data-title="the taxonomy wizard">
+      <h2>The Taxonomy Wizard <a class="anchor" href="#taxonomy-wizard" aria-label="Link to section">#</a></h2>
+      <p>The Taxonomy Wizard is where you define and edit the structural skeleton of a map. Open it from the start screen ("New Taxonomy") or from the Activity Bar (list icon at bottom) to edit the current map's taxonomy.</p>
+<p><strong>Title and Description</strong><br>A title is required; the description is optional and surfaces in the start screen and on the map header.</p>
+<p><strong>Node Types</strong><br>Each node type has:</p>
+<ul><li>Name (e.g. "Person", "Concept", "Institution")</li><li>Shape: Circle or Rectangle (affects how nodes render on the canvas)</li><li>Icon: A 1-2 character symbol shown in the sidebar</li><li>Fields: Custom attributes (text, select, textarea, or the special <code>tags</code> field)</li><li>Size driven by: Optionally select a numeric or select field whose value scales the node radius</li></ul>
+<p><strong>Classifiers</strong><br>Classifiers are the generic grouping dimensions of your map. There are no hardcoded ones — you choose the dimensions you need (e.g. domain, era, status, region). Each classifier has an id (used as the field key on nodes), a label, an optional colour palette, and a list of allowed values. Any field on a node whose key matches a classifier id is treated as a classifier value (filterable, surfaced in the sidebar).</p>
+<p><strong>Edge Types</strong><br>Each edge type has a label, colour, directed/undirected flag, and line style (solid, dashed, dotted).</p>
+<p><strong>Review</strong><br>See a summary of everything you defined. From here you can also click <strong>"Save as Template"</strong> to store this structure as a reusable .cmt. Click "Create" (new) or "Save" (edit mode) to finalize.</p>
+<p><strong>Round-trip to disk (REQ-090):</strong> When you save changes from "Edit Taxonomy" on an existing map, the app writes the updated .cmt silently — no dialog. It first tries to overwrite the template file <em>next to the map</em> (e.g. <code>Maps/my-domain/my-domain.cmt</code>); if no such file exists, it falls back to your shared Templates folder. The next time you open the map, the edits are already there.</p>
+<p>Navigation: Use Back/Next buttons at the bottom. Press Escape to cancel.</p>
+    </article>
+
+    <article class="section" id="llm-mapping" data-tags="llm ai claude gpt mapping extract prompt template generate" data-title="using an llm to map content to a template">
+      <h2>Using an LLM to Map Content to a Template <a class="anchor" href="#llm-mapping" aria-label="Link to section">#</a></h2>
+      <p>You can use any LLM (Claude, GPT-4, Llama, etc.) to generate concept map content that you then open in ConceptMapper. The workflow is: design your taxonomy in the app, export or describe it to the LLM, and have the LLM produce a .cm file you can open.</p>
+<p><strong>Step 1: Design your taxonomy</strong></p>
+<p>Use the Taxonomy Wizard (New Taxonomy on the start screen) to define:</p>
+<ul><li>Node types with their fields (e.g. Person with importance, dates, tags)</li><li>Streams/categories with colours</li><li>Phases/generations with labels</li><li>Edge types with styles</li></ul>
+<p>Save it as a template (.cmt) for reuse.</p>
+<p><strong>Step 2: Export the template for the LLM</strong></p>
+<p>Open your .cmt file in a text editor -- it is plain JSON. Copy the full contents. This gives the LLM the exact structure it needs to produce compatible output.</p>
+<p><strong>Step 3: Prompt the LLM</strong></p>
+<p>Use a prompt like this (adapt to your content):</p>
+<hr>
+<p>I have a concept-mapping tool that uses this taxonomy template:</p>
+<pre><code>[paste your .cmt template here]</code></pre>
+<p>Please analyse the following text and produce a .cm concept map file. The output must be a markdown file using EXACTLY this format:</p>
+<p><strong>CRITICAL: Every property line inside a fenced code block MUST use "key: value" format with a colon.</strong> Do not omit the colon — the parser requires it.</p>
+<p>Sections required:</p>
+<ol><li><strong>## Generations</strong> -- a markdown table with columns: Gen, Period, Label, Attention Space Count</li><li><strong>## Streams</strong> -- a markdown table with columns: Stream ID, Name, Colour, Description</li><li><strong>## [Type] Nodes</strong> -- one section per node type (e.g. "## Task Nodes", "## Person Nodes"). Each node is a fenced code block (```) containing key: value pairs. Required keys: id, name, generation, stream. Include ALL fields from the template's node type definition. End with notes: if applicable.</li><li><strong>## Edges</strong> -- fenced code blocks with "from: [id] to: [id] type: [edge_type]" lines, each followed by "  note: [description]"</li></ol>
+<p>Use the stream IDs, generation numbers, and edge types defined in the template. Assign each node to the most appropriate stream and generation.</p>
+<p>Here is the text to analyse:</p>
+<p>[paste your source text]</p>
+<hr>
+<p><strong>Step 4: Open the result</strong></p>
+<p>Save the LLM's output as a .cm file and open it in ConceptMapper (File &gt; Open or Cmd+O). The app parses the markdown format and renders the concept map.</p>
+<p><strong>Tips for better results:</strong></p>
+<ul><li>Include the full .cmt template so the LLM knows exact field names and options.</li><li>Ask the LLM to use the specific stream IDs and generation numbers from the template.</li><li>For select-type fields (like importance or status), tell the LLM to use only the defined options.</li><li>Review and edit the generated .cm file before opening -- fix any formatting issues.</li><li>Longer, more detailed source text produces richer maps.</li><li>You can iteratively add content: open the generated map, then manually add nodes and edges the LLM missed.</li></ul>
+<p><strong>Example node block format:</strong></p>
+<pre><code>id:               my_node_id
+name:             My Node Name
+generation:       2
+stream:           my_stream
+priority:         high
+status:           active
+tags:             keyword1, keyword2
+notes:            Detailed description of this node</code></pre>
+<p><strong>Example edge block format:</strong></p>
+<pre><code>from: node_a to: node_b type: chain
+  note: Description of how A relates to B
+
+from: node_c to: node_d type: rivalry
+  note: Description of the tension between C and D</code></pre>
+    </article>
+
+    <article class="section" id="canvas-navigation" data-tags="canvas pan zoom drag select navigate marquee" data-title="canvas navigation and interaction">
+      <h2>Canvas Navigation and Interaction <a class="anchor" href="#canvas-navigation" aria-label="Link to section">#</a></h2>
+      <p>The central canvas renders your concept map as an interactive graph.</p>
+<p><strong>Navigation:</strong></p>
+<ul><li><strong>Pan:</strong> Click and drag on empty canvas space.</li><li><strong>Zoom:</strong> Scroll wheel or trackpad pinch gesture.</li><li><strong>Marquee zoom:</strong> Hold Shift and drag to draw a rectangle -- the canvas zooms to fit that region.</li></ul>
+<p><strong>Selection:</strong></p>
+<ul><li>Click a node to select it. The Properties panel opens on the right.</li><li>Click empty canvas to deselect.</li><li>In People or Concepts view, clicking a node reveals its cross-type connections.</li></ul>
+<p><strong>Visual indicators:</strong></p>
+<ul><li><strong>Node colour:</strong> Base colour comes from the node's classifier value (e.g. pillar, stream). On top of that, the colour is progressively lightened by <strong>BFS depth</strong> — roots keep their full colour, deeper nodes are paler. On large maps this varies the visual field without changing hue, so you can still read classifier membership while seeing hierarchy at a glance.</li><li><strong>Node shape:</strong> Circle = thinker/person types; Rectangle = concept types. Custom types use whichever shape is configured in the taxonomy.</li><li><strong>Node size:</strong> Can be driven by a field value (e.g. eminence controls circle radius).</li><li><strong>+/- indicator:</strong> Small circle in upper-right of a node. Means it has children. Click to collapse/expand.</li><li><strong>Yellow/orange dot:</strong> The node has notes attached.</li><li><strong>Dashed outline:</strong> Placeholder or contested status.</li><li><strong>White outline:</strong> Currently selected or hovered node.</li><li><strong>Green outline:</strong> Edge source during edge-drawing mode.</li><li><strong>Edge arrows:</strong> Directed relationships show an arrowhead.</li><li><strong>Edge thickness:</strong> Proportional to edge weight (thicker = stronger relationship).</li><li><strong>Dashed red lines:</strong> Rivalry or opposition.</li><li><strong>Dotted grey lines:</strong> Alliance or institutional connections.</li></ul>
+    </article>
+
+    <article class="section" id="sidebar-filtering" data-tags="sidebar explorer filter classifier tag list" data-title="sidebar: explorer, classifiers, tags, and filtering">
+      <h2>Sidebar: Explorer, Classifiers, Tags, and Filtering <a class="anchor" href="#sidebar-filtering" aria-label="Link to section">#</a></h2>
+      <p>The sidebar (toggle with the panel icon in the Activity Bar) has several sections:</p>
+<p><strong>Action Buttons</strong> (top)<br>One "+ [Type]" button per node type defined in your taxonomy, plus a "+ Edge" button. During edge-drawing mode, this button changes to "Cancel Edge".</p>
+<p><strong>Collapse / Expand Stepper</strong><br>A vertical control with a + on top, the current expand level in the middle, and a - underneath. See "Collapse and Expand to Level" for the full mechanics.</p>
+<p><strong>Filter Sections</strong> (collapsible)<br>Click any section header to expand it:</p>
+<ul><li><strong>One section per classifier</strong> — Generated dynamically from the template's classifier list. Each shows a coloured dot per value with a checkbox. Click a value to uncheck it (hide nodes of that value). A "Show All" button appears when any filter is active.</li><li><strong>Tags</strong> (open by default when tags are present) — Lists every tag in use across the map with a count. Click a tag to filter; click again to clear.</li><li><strong>Attribute Filters</strong> — One section per filterable field from your node type configs. Select-type fields always appear. Text fields appear when they have 30 or fewer unique values.</li><li><strong>Date Range</strong> — If your node types have date_from/date_to fields, a date range filter appears with From/To year inputs.</li></ul>
+<p><strong>Filter logic:</strong></p>
+<ul><li>Between sections (e.g. classifier A AND tags): nodes must pass ALL active filters.</li><li>Within a section (e.g. two values checked): nodes matching ANY checked value are shown.</li><li>Unchecked values hide matching nodes from both the canvas and the node list.</li></ul>
+<p><strong>Nodes</strong> (collapsible)<br>A searchable, scrollable list of all visible nodes (respects active filters) sorted alphabetically. Each entry shows a colour indicator and the node name. Use the filter input to search by name. Click a node to select it on the canvas.</p>
+    </article>
+
+    <article class="section" id="collapse-expand-level" data-tags="collapse expand level depth hierarchy stepper fold" data-title="collapse and expand to level">
+      <h2>Collapse and Expand to Level <a class="anchor" href="#collapse-expand-level" aria-label="Link to section">#</a></h2>
+      <p>Every map opens <strong>fully expanded</strong> — all nodes and their links visible. The stepper in the sidebar controls how deep the visible hierarchy goes; step down to progressively collapse leaves toward the roots.</p>
+<p><strong>The stepper</strong><br>A small vertical control: <strong>+</strong> on top, the current level number in the middle, <strong>-</strong> on the bottom.</p>
+<ul><li><strong>+</strong> reveals the next level of children.</li><li><strong>-</strong> collapses the deepest visible level.</li><li><strong>Double-click the number</strong> to toggle between fully collapsed (0) and fully expanded.</li></ul>
+<p><strong>How depth is computed</strong><br>The app performs a BFS from every root and assigns each node the shortest distance from any root. Level 0 = roots; level 1 = direct children; and so on. Cycles and unreachable nodes are assigned depth 0 so they remain visible at every level.</p>
+<p><strong>Fresh load vs. mutation</strong><br>A fresh load (open file, switch map) reseeds to the maximum depth — the map opens fully expanded.<br>Manual edits (adding nodes, drawing edges, editing properties) preserve the current view state — your stepper position does not jump when you make changes.</p>
+<p><strong>Why this matters</strong><br>Concept maps with hundreds of nodes are unreadable when shown all at once. The stepper lets you progressively disclose structure: start with the trunks, then reveal branches, then leaves.</p>
+    </article>
+
+    <article class="section" id="tags" data-tags="tag tagging label keyword autocomplete pill" data-title="tags: pills, autocomplete, and the sidebar list">
+      <h2>Tags: Pills, Autocomplete, and the Sidebar List <a class="anchor" href="#tags" aria-label="Link to section">#</a></h2>
+      <p>Tags are a first-class labelling mechanism. Any node type can declare a <code>tags</code> field in the taxonomy; nodes then carry a list of comma-separated tag values.</p>
+<p><strong>Entering tags</strong><br>In the Properties panel, the tags field renders as pills:</p>
+<ul><li>Type a few characters — a dropdown appears with matching tags already used elsewhere in the map (REQ-087 autocomplete).</li><li>Press Enter or pick from the dropdown to add the tag as a pill.</li><li>Click the × on a pill to remove it.</li><li>Tags are saved automatically with the rest of the node's properties.</li></ul>
+<p><strong>The Tags sidebar section (REQ-089)</strong><br>When any node in the map carries one or more tags, a <strong>Tags</strong> section appears in the sidebar (open by default). It lists every tag in use with the count of nodes that have it. Click a tag to filter the canvas to nodes carrying that tag; click again to clear.</p>
+<p><strong>Why tags are special</strong><br>Classifiers are structural (defined in the template); tags are emergent (added freely as you work). Use classifiers to encode the structure of your domain (e.g. "domain: economics"); use tags to capture cross-cutting themes you discover only after the map exists (e.g. "#liquidity-risk", "#post-crisis").</p>
+    </article>
+
+    <article class="section" id="notes-editor" data-tags="notes markdown editor write text format" data-title="the notes editor">
+      <h2>The Notes Editor <a class="anchor" href="#notes-editor" aria-label="Link to section">#</a></h2>
+      <p>Each node can have rich-text notes attached. The Notes pane renders standard markdown and lets you attach an external .md file as the source of truth.</p>
+<p><strong>To open:</strong> Select a node, then click "Edit Notes" in the Properties panel header.</p>
+<p><strong>Edit vs. Preview:</strong> The pane opens in Preview by default — rendered markdown with wrapping. Click <strong>Edit</strong> to switch to a wrapping textarea showing the raw markdown source; click <strong>Preview</strong> to switch back.</p>
+<p><strong>Supported markdown:</strong> Standard CommonMark — headings (<code>#</code> through <code>####</code>), <code>**bold**</code>, <code>*italic*</code>, `<code>inline code</code>`, fenced code blocks, lists, <a href="url">links</a>, &gt; blockquotes, --- rules.</p>
+<p><strong>Attach a markdown file:</strong> Click <strong>Attach .md</strong> in the pane header to pick a file. The absolute path is stored on the node and round-tripped through the .cm file as <code>notes_file: /absolute/path/to/file.md</code>. The file's contents are loaded into the editor every time the pane opens — the file is the source of truth.</p>
+<p><strong>Edits save back:</strong> Any change in the editor writes back to the attached file after 500ms idle. If no file is attached, changes are stored inline on the node and round-tripped via the .cm as before.</p>
+<p><strong>Detach:</strong> Click <strong>Detach</strong> to drop the file reference. The currently-loaded text stays in the pane and persists inline on the node — nothing is lost. You can re-attach the same file (or another) at any time.</p>
+<p><strong>Relationship context:</strong> If the selected node has edges with notes, they appear at the top of the pane as "Relationship Context" — read-only summaries of edge annotations.</p>
+<p><strong>Resizing:</strong> Drag the border between the canvas and the notes pane to adjust height.</p>
+    </article>
+
+    <article class="section" id="view-modes" data-tags="view mode full people concepts filter dynamic" data-title="view modes: dynamic filtered views">
+      <h2>View Modes: Dynamic Filtered Views <a class="anchor" href="#view-modes" aria-label="Link to section">#</a></h2>
+      <p>View modes let you focus on different parts of your map. They are generated dynamically from your taxonomy's node types:</p>
+<p><strong>Full Network</strong> (default)<br>Shows all nodes and all edges. The complete picture.</p>
+<p><strong>Filtered Views</strong> (one per node type)<br>Each node type defined in your taxonomy gets its own view mode button in the Activity Bar. For example:</p>
+<ul><li>A "Person" type (circle shape) creates a People view that shows only people</li><li>A "Concept" type (rectangle shape) creates a Concepts view that shows only concepts</li><li>Custom types (e.g. "Institution", "Event") each get their own filtered view</li></ul>
+<p>In any filtered view, clicking a node temporarily reveals its cross-type connections. This lets you explore relationships without visual clutter.</p>
+<p><strong>Node Collapse (+/-)</strong><br>Nodes with children (connected via any edge type -- directed or undirected) show a small +/- indicator in the upper-right corner. Click it to collapse/expand:</p>
+<ul><li><strong>Collapse (-):</strong> Hides all children reachable only through this node. The indicator changes to +.</li><li><strong>Expand (+):</strong> Shows the hidden children again.</li><li>Children with multiple parents are only hidden when all their parents are collapsed.</li><li>Collapse cascades: hiding a node also hides its exclusively-connected subtree.</li></ul>
+<p>Switch between modes using the Activity Bar buttons. When you switch modes, previously revealed nodes reset.</p>
+    </article>
+
+    <article class="section" id="settings-themes" data-tags="settings theme colour color customise customize appearance" data-title="settings: themes and colour customisation">
+      <h2>Settings: Themes and Colour Customisation <a class="anchor" href="#settings-themes" aria-label="Link to section">#</a></h2>
+      <p>Open Settings via the gear icon at the bottom of the Activity Bar.</p>
+<p><strong>Theme</strong><br>Choose from available themes. Each theme changes the background, panel colours, text colours, and accent colours across the entire UI. Themes include dark options (Midnight, Obsidian, Solarized Dark, Nord) and light options (Ivory, Paper).</p>
+<p><strong>Stream Colours</strong><br>Override the default colour for any stream/category. Click the colour swatch to pick a new colour. Click the X button to reset to the taxonomy default.</p>
+<p><strong>Edge Type Colours</strong><br>Override colours for specific edge types (e.g. make "rivalry" edges bright red, "alliance" edges blue). Only edge types present in your current map appear here.</p>
+<p>All colour customisations persist across sessions via local storage.</p>
+<p>(LLM configuration will be available in a future release.)</p>
+    </article>
+
+    <article class="section" id="file-formats" data-tags="file format save export open import json markdown cm cmt" data-title="file formats: .cm, .cmt, .json, and markdown export">
+      <h2>File Formats: .cm, .cmt, .json, and Markdown Export <a class="anchor" href="#file-formats" aria-label="Link to section">#</a></h2>
+      <p>ConceptMapper works with several file formats:</p>
+<p><strong>.cm (Concept Map)</strong> -- The primary format. Structured markdown containing:</p>
+<ul><li>An HTML comment header pointing at the .cmt template: <code>&lt;!-- template: foo.cmt --&gt;</code></li><li>Optional edge-colour overrides header: <code>&lt;!-- edge-colors: {...} --&gt;</code></li><li>A fenced code block per node, with <code>key: value</code> properties (including any classifier fields and a tags CSV)</li><li>A fenced Edges block (<code>from: a to: b type: x</code>)</li><li>A free-form Notes section</li></ul>
+<p>The app auto-saves to the source .cm file as you make changes (with a short debounce).</p>
+<p><strong>.cmt (Concept Map Template)</strong> -- A JSON file containing the taxonomy: title, description, classifiers, node_types, edge_types. The template ALWAYS owns the structure — the .cm map file never carries node-type or classifier definitions of its own. A .cmt can live either in your shared Templates folder or right next to its map (e.g. <code>Maps/my-domain/my-domain.cmt</code> alongside <code>Maps/my-domain/my-domain.cm</code>); the app resolves it from the path referenced in the .cm header.</p>
+<p><strong>.json</strong> -- The app can open plain .json files if they follow the concept map data schema.</p>
+<p><strong>Markdown Export</strong> -- Use File &gt; Export (Cmd+Shift+E) to export a human-readable markdown version of your map, with tables for generations and streams, fenced code blocks for nodes, and structured edge listings.</p>
+<p><strong>Image Export</strong> -- Use File &gt; Export Image (Cmd+E) to save the current canvas view as a PNG image.</p>
+<p><strong>Opening files:</strong></p>
+<ul><li>File &gt; Open (Cmd+O) or the "Open File" button on the start screen</li><li>The app accepts .cm, .cmt, and .json files</li><li>Legacy markdown (.cm) files from older versions are automatically migrated to the new JSON format</li></ul>
+    </article>
+
+    <article class="section" id="keyboard-shortcuts" data-tags="keyboard shortcut hotkey key cmd command" data-title="keyboard shortcuts">
+      <h2>Keyboard Shortcuts <a class="anchor" href="#keyboard-shortcuts" aria-label="Link to section">#</a></h2>
+      <p><strong>File operations:</strong></p>
+<ul><li>Cmd+O -- Open file</li><li>Cmd+S -- Save As</li><li>Cmd+E -- Export as image</li><li>Cmd+Shift+E -- Export concept map (markdown)</li><li>Cmd+N -- New Taxonomy (from menu)</li></ul>
+<p><strong>Navigation:</strong></p>
+<ul><li>Cmd+K -- Focus search field</li><li>Escape -- Cancel edge drawing / close modals</li></ul>
+<p><strong>Canvas:</strong></p>
+<ul><li>Click + drag -- Pan</li><li>Scroll wheel / pinch -- Zoom</li><li>Shift + drag -- Marquee zoom to region</li></ul>
+<p><strong>Notes editor:</strong></p>
+<ul><li>Enter -- New line</li><li>Standard text editing shortcuts (Cmd+A, Cmd+C, Cmd+V, etc.)</li></ul>
+<p><strong>General:</strong></p>
+<ul><li>Cmd+? -- Toggle help overlay (native macOS help)</li></ul>
+    </article>
+
+    <article class="section" id="network-analysis" data-tags="analysis centrality community path metrics degree betweenness influence bridge" data-title="network analysis tools">
+      <h2>Network Analysis Tools <a class="anchor" href="#network-analysis" aria-label="Link to section">#</a></h2>
+      <p>The Network Analysis panel (graph icon in the Activity Bar) provides quantitative tools for understanding your concept map's structure. These metrics come from graph theory and social network analysis — they help reveal patterns that are invisible when you only look at the visual layout.</p>
+<hr>
+<p><strong>NETWORK OVERVIEW METRICS</strong></p>
+<p>These describe the network as a whole.</p>
+<p><strong>Density</strong> (0.0 to 1.0)<br>The fraction of all possible connections that actually exist. In a network of N nodes, there are N×(N-1)/2 possible undirected edges.</p>
+<ul><li><em>0.0</em> — No edges at all (disconnected nodes)</li><li><em>0.1–0.3</em> — Typical for concept maps; selective, meaningful connections</li><li><em>0.5+</em> — Very dense; almost everything connects to everything</li><li><em>1.0</em> — Complete graph (every node connected to every other)</li></ul>
+<p>A density of 0.15 means roughly 15% of all possible connections exist. Intellectual networks tend to be sparse — high density often means your taxonomy needs more differentiated relationship types.</p>
+<p><strong>Average Degree</strong><br>The mean number of connections per node. If your network has 30 nodes and 45 edges, the average degree is about 3.0 (each node has 3 connections on average).</p>
+<ul><li><em>1–2</em> — Mostly linear chains; tree-like structure</li><li><em>3–5</em> — Well-connected; typical for rich concept maps</li><li><em>8+</em> — Very dense hub-and-spoke or mesh patterns</li></ul>
+<p>Useful as a quick health check: if average degree is below 2, you may have isolated clusters or missing relationships.</p>
+<p><strong>Diameter</strong><br>The longest shortest path between any two reachable nodes. It measures how "wide" the network is — how many steps to traverse from one extreme to the other.</p>
+<ul><li><em>2–3</em> — Compact, "small world" network</li><li><em>5–8</em> — Moderate; common in intellectual history maps</li><li><em>10+</em> — Very spread out; may indicate missing bridging connections</li></ul>
+<p>A diameter of 6 means some ideas are 6 relationship-hops apart. If you expect them to be more closely linked, the diameter reveals a structural gap.</p>
+<p><strong>Modularity</strong> (-0.5 to 1.0)<br>Measures how cleanly the network divides into distinct groups (communities), compared to a random network with the same degree distribution.</p>
+<ul><li><em>Below 0.0</em> — Less structured than random</li><li><em>0.0–0.3</em> — Weak community structure; integrated, cross-cutting network</li><li><em>0.3–0.7</em> — Clear community structure; distinct intellectual clusters</li><li><em>0.7+</em> — Very strong separation; almost independent sub-networks</li></ul>
+<p>High modularity suggests your ideas naturally cluster — compare these detected clusters against your own stream/category assignments. Differences often reveal unexpected structural patterns.</p>
+<hr>
+<p><strong>NODE METRICS — What Makes a Node Important?</strong></p>
+<p>Different metrics capture different kinds of importance. A node can rank high on one metric and low on another — that contrast is itself informative.</p>
+<p><strong>Connections (Degree Centrality)</strong><br>Simply how many edges a node has, normalized by the maximum possible (N-1).</p>
+<ul><li><em>High degree</em> — The most "active" or connected idea in the network. These are the concepts everyone references.</li><li><em>Low degree</em> — Peripheral or specialised ideas with few connections.</li><li><em>Degree tells you popularity, not importance.</em> A concept can be highly connected but structurally redundant.</li></ul>
+<p><em>Interpretation:</em> In an intellectual history map, high-degree thinkers are the most referenced. But are they referenced because they are foundational, or simply well-known? Other metrics help distinguish this.</p>
+<p><strong>Bridge Score (Betweenness Centrality)</strong><br>How often a node sits on the shortest path between all other pairs of nodes. Computed using Brandes' algorithm across all-pairs shortest paths, normalized by (N-1)(N-2).</p>
+<ul><li><em>High bridge score</em> — This node is a structural connector or bottleneck. Removing it would fragment the network or force longer paths between groups.</li><li><em>Low bridge score</em> — This node is embedded within a cluster; its removal wouldn't disrupt flow between groups.</li></ul>
+<p><em>The most revealing metric.</em> A node with few connections but a high bridge score is the critical link between otherwise separate intellectual communities. In academic networks, these are the "translators" who connect disciplines.</p>
+<p><em>Example:</em> A thinker with only 4 connections but the highest bridge score connects two otherwise separate schools of thought. Without them, ideas from one school cannot reach the other.</p>
+<p><strong>Influence (Eigenvector Centrality)</strong><br>Whether a node is connected to other important nodes. This is recursive prestige computed via power iteration — importance flows through the network.</p>
+<ul><li><em>High influence</em> — Connected to the "right" nodes. These ideas are at the centre of the most important cluster.</li><li><em>Low influence</em> — Connected to peripheral nodes only.</li><li><em>It is not enough to have many connections; they need to be connections to well-connected nodes.</em></li></ul>
+<p><em>Interpretation:</em> Eigenvector centrality captures "prestige by association." In an intellectual network, a thinker with high influence is connected to other influential thinkers — they are part of the inner circle, not just well-known.</p>
+<p><em>Contrast with Degree:</em> A concept can have many connections (high degree) but to peripheral nodes (low influence), or few connections but to the most central nodes (low degree, high influence).</p>
+<p><strong>Reach (Closeness Centrality)</strong><br>How quickly a node can reach every other node in the network, using Wasserman-Faust normalization to handle disconnected components.</p>
+<ul><li><em>High reach</em> — This node is at the "centre" of the network in terms of average distance. It can spread information to every corner efficiently.</li><li><em>Low reach</em> — This node is on the periphery; it takes many hops to reach distant parts of the network.</li></ul>
+<p><em>Interpretation:</em> Reach identifies the most "accessible" ideas. In a concept map of organisational learning, a concept with high reach is the one you would start with to explain the entire field — everything else is relatively close.</p>
+<p><em>Note:</em> In disconnected networks, reach uses a scaled normalization so that nodes in larger components still score higher than nodes in isolated pairs.</p>
+<hr>
+<p><strong>COMPARING NODE METRICS — Reading the Rankings Table</strong></p>
+<p>The rankings table lets you sort by any metric. The most interesting patterns emerge from <em>contrasts</em>:</p>
+<ul><li><em>High Degree + Low Bridge</em> — A hub within a single cluster. Well-connected but not structurally critical to the whole network.</li><li><em>Low Degree + High Bridge</em> — A rare, critical connector. Few connections, but they span community boundaries. These are the most structurally fragile nodes.</li><li><em>High Influence + Low Degree</em> — Connected to the right people, not to many people. Prestige by association.</li><li><em>High Reach + Low Influence</em> — Centrally positioned but not connected to the inner circle. A generalist rather than a specialist.</li><li><em>High everything</em> — A true central node: well-connected, structurally critical, influential, and accessible.</li></ul>
+<hr>
+<p><strong>COMMUNITIES</strong></p>
+<p>The app detects natural groupings using label propagation — an iterative algorithm where each node adopts the most common label among its neighbors until the labels stabilise. Nodes that are more densely connected to each other than to the rest of the network form a community.</p>
+<p>Toggle <strong>"Color by community"</strong> to see these groupings visually overlaid on the canvas. Click a community badge to highlight just its members and dim everything else.</p>
+<p>Community detection is unsupervised — it finds structure you didn't explicitly define. Compare detected communities against your own stream/category assignments:</p>
+<ul><li><em>Communities match streams</em> — Your taxonomy accurately reflects the network's structure.</li><li><em>Communities cross streams</em> — Some ideas bridge your categories. Consider whether your categorisation needs refinement or whether these bridges are the interesting finding.</li><li><em>A stream splits into multiple communities</em> — Your category may be too broad; there are sub-groups within it.</li></ul>
+<p><strong>Modularity score</strong> (shown in Overview) measures how strong these community boundaries are. Above 0.3 indicates meaningful structure.</p>
+<hr>
+<p><strong>PATH FINDER</strong></p>
+<p>Select any two nodes to find the shortest path between them. The path is highlighted on the canvas in orange. This is a BFS (breadth-first search) that finds ALL equally short paths, not just one.</p>
+<ul><li><strong>Distance</strong> — Number of steps (edges) between the two nodes. A distance of 3 means A→B→C→D.</li><li><strong>Routes</strong> — How many equally-short paths exist. Multiple routes mean the connection is structurally redundant (robust). A single route means it is fragile — one removed edge could disconnect them.</li><li><strong>Weakest Link</strong> — The single edge on the path whose removal would most increase the distance between the two nodes. This surfaces hidden dependencies. The weakest link is the relationship your network most depends on for this particular connection.</li></ul>
+<p><em>Use case:</em> "How is this thinker connected to that concept?" The path finder shows the chain of relationships, and the weakest link tells you which single relationship is most critical to that chain.</p>
+<hr>
+<p><strong>K-CORE DECOMPOSITION</strong></p>
+<p>The k-core number indicates which "shell" of the network a node belongs to. It is computed by iteratively removing nodes with degree ≤ k and incrementing k.</p>
+<ul><li><em>k=1</em> — The outermost shell. These nodes are connected to only one part of the network and are the first to be "peeled away."</li><li><em>k=2</em> — Each of these nodes has at least 2 connections to other k≥2 nodes.</li><li><em>Highest k</em> — The innermost core. These are the most tightly interconnected concepts — the structural bedrock of the network. Every node in the k-core is connected to at least k other k-core nodes.</li></ul>
+<p><em>Interpretation:</em> The innermost core reveals the foundational cluster of ideas that everything else builds upon. In an intellectual history, these are the ideas and thinkers that are so interconnected they form a self-reinforcing system. Peripheral nodes (k=1) are recent additions, outliers, or specialised concepts connected to only one thread.</p>
+<p><em>Practical use:</em> Filter your rankings by k-core to identify the structural foundation vs. the periphery. If a concept you consider important has a low k-core number, it may be under-connected in your taxonomy.</p>
+    </article>
+
+    <article class="section" id="faq" data-tags="faq question help how why what" data-title="frequently asked questions">
+      <h2>Frequently Asked Questions <a class="anchor" href="#faq" aria-label="Link to section">#</a></h2>
+      <p><strong>Q: How do I get started with a blank map?</strong><br>A: Click "New Taxonomy" on the start screen and follow the 6-step wizard. At minimum, give it a title, keep the default node types (Person and Concept), add at least one stream/category, and one generation.</p>
+<p><strong>Q: What happened to streams and generations? My old maps used them.</strong><br>A: They are no longer privileged dimensions. The current model uses generic <strong>classifiers</strong> defined entirely in the template — pick whatever dimensions your domain needs (e.g. domain, era, region, status). Old .cm files are migrated on load: any <code>stream:</code> or <code>generation:</code> keys are lifted into classifier fields, and old "Streams" / "Generations" sections become Notes. Your maps still work.</p>
+<p><strong>Q: Can I rename or redefine node types after creating a map?</strong><br>A: Yes. Click the taxonomy/list icon at the bottom of the Activity Bar to re-open the wizard in edit mode. Changes to the taxonomy apply to the existing map.</p>
+<p><strong>Q: How do I delete a node?</strong><br>A: Node deletion is not yet available through the UI. You can edit the .cm file directly (it is JSON) and remove the node entry.</p>
+<p><strong>Q: How do I delete an edge?</strong><br>A: Edge deletion is not yet available through the UI. You can edit the .cm file directly.</p>
+<p><strong>Q: Where are my files saved?</strong><br>A: When you open or create a .cm file, the app auto-saves to that file path with a 2-second debounce after each change. The save indicator in the status bar confirms when a save occurs.</p>
+<p><strong>Q: Can I use AI to populate a concept map?</strong><br>A: Yes. Design your taxonomy in the app, export the .cmt template, and use any LLM (Claude, GPT-4, etc.) to generate a .cm file from your source text. See "Using an LLM to Map Content" in this help for detailed instructions and a prompt template.</p>
+<p><strong>Q: What does "Save as Template" do?</strong><br>A: It stores the current taxonomy structure (node types, streams, generations) without any nodes or edges. The template appears on the start screen for quick reuse when creating new maps.</p>
+<p><strong>Q: How do I customise node colours?</strong><br>A: Node colours come from the classifier marked as colour-providing in the template (typically the first one). Each classifier value has its own colour; change it in the template via the Taxonomy wizard.</p>
+<p><strong>Q: If I edit the taxonomy in the app, where does it save?</strong><br>A: Silently — no dialog. The app first looks for the .cmt template <em>next to the map</em> (e.g. <code>Maps/my-domain/my-domain.cmt</code>); if it finds one there, it overwrites that file. Otherwise it writes to your shared Templates folder. Either way, the next time you open the map, your edits are in place.</p>
+<p><strong>Q: Can I have more than two node types?</strong><br>A: Yes. In the taxonomy wizard (Step 2), click "+ Add Type" to create as many node types as you need. Each can have its own shape, icon, and custom fields.</p>
+<p><strong>Q: What is the "Size driven by" option in the node type configuration?</strong><br>A: If a node type has a select-type field (e.g. "Importance" with options major, minor, etc.), you can designate that field to control the visual size of nodes on the canvas. Higher-ranked options produce larger nodes.</p>
+<p><strong>Q: How do I share a map with someone?</strong><br>A: Send them the .cm file. They can open it in ConceptMapper. The file is self-contained JSON. You can also export a markdown version or a PNG image for people who do not have the app.</p>
+<p><strong>Q: What happens if I close the app without saving?</strong><br>A: If you opened a file, the app auto-saves changes as you work (2-second debounce). If you created a new taxonomy and never saved the file, the data may be lost.</p>
+    </article>
+
+    <article class="section" id="troubleshooting" data-tags="trouble error problem fix issue bug not working" data-title="troubleshooting">
+      <h2>Troubleshooting <a class="anchor" href="#troubleshooting" aria-label="Link to section">#</a></h2>
+      <p><strong>"No nodes found" error when opening a file</strong><br>The file may not be in a recognised format. ConceptMapper expects either a v2 JSON data file (.cm) or a legacy structured markdown file. Check that the file has the correct structure.</p>
+<p><strong>Canvas is blank after creating a taxonomy</strong><br>This is expected -- a new taxonomy has no nodes yet. Use the sidebar's "+ [Type]" buttons to add nodes, or use Map Text to populate from a text source.</p>
+<p><strong>Nodes appear in unexpected positions</strong><br>Layout is force-directed; positions emerge from the edges. If you have classifier-driven layout enabled in the template, the relevant classifier value determines a node's region. Check the node's classifier values in the Properties panel.</p>
+<p><strong>Auto-save is not working</strong><br>Auto-save requires that the file was opened from disk (giving the app a file path to write to). If you are working with an unsaved new map, use File &gt; Save As (Cmd+S) to establish a file path first.</p>
+<p><strong>Theme colours look wrong after updating</strong><br>Try closing and re-opening Settings. Colour overrides are stored in local storage -- clear them by clicking the X button next to each colour override in Settings.</p>
+<p><strong>Filters seem to have no effect</strong><br>If clicking a filter value does not change the visible nodes, the filter may only have one unique value (all nodes match). Check the filter section -- if there is only one option, unchecking it hides all nodes of that type.</p>
+    </article></div>
+    </div>
+    <script>
+      (function () {
+        var q = document.getElementById('q');
+        var sections = Array.prototype.slice.call(document.querySelectorAll('.section'));
+        var none = document.getElementById('noresults');
+        q.addEventListener('input', function () {
+          var term = q.value.trim().toLowerCase();
+          var shown = 0;
+          sections.forEach(function (el) {
+            if (!term) { el.hidden = false; shown++; return; }
+            var hay = el.getAttribute('data-title') + ' ' + el.getAttribute('data-tags') + ' ' + el.textContent.toLowerCase();
+            var match = hay.indexOf(term) !== -1;
+            el.hidden = !match;
+            if (match) shown++;
+          });
+          none.hidden = shown !== 0;
+        });
+      })();
+    </script>
+</main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <p>Concept Mapper 1.0 · Support: <a href="mailto:dromologue@gmail.com">dromologue@gmail.com</a></p>
+        <p class="muted">Documentation and privacy policy for Concept Mapper, a macOS application.</p>
+      </div>
+    </footer>
+</body>
+</html>
