@@ -18,6 +18,7 @@
           <a href="index.html">Overview</a>
           <a href="help.html" class="on">Help &amp; Support</a>
           <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms</a>
         </nav>
       </div>
     </header>
@@ -59,7 +60,7 @@
       <h2>Getting Started <a class="anchor" href="#getting-started" aria-label="Link to section">#</a></h2>
       <p>ConceptMapper is a visual concept-mapping tool for exploring relationships between thinkers, ideas, and concepts.</p>
 <p>When you first open the app you see the <strong>Start Screen</strong> with three options:</p>
-<ol><li><strong>New Taxonomy</strong> -- Opens a step-by-step wizard that walks you through defining your map's structure: a title, node types, categories (streams), and time periods (generations).</li></ol>
+<ol><li><strong>New Taxonomy</strong> -- Opens a step-by-step wizard that walks you through defining your map's structure: a title, node types, classifiers (the grouping dimensions your domain needs), and edge types.</li></ol>
 <ol><li><strong>Open File</strong> -- Load an existing .cm or .json concept map file. You can also use File &gt; Open (Cmd+O) from the menu bar.</li></ol>
 <ol><li><strong>Map Text</strong> -- (Coming soon.) Use an external LLM to extract nodes and relationships into a taxonomy structure. See "Using an LLM to Map Content" in this help for the current workflow.</li></ol>
 <p>If you have previously saved templates, they appear below these buttons. Click one to start a new map pre-loaded with that template's structure.</p>
@@ -96,26 +97,35 @@
 
     <article class="section" id="activity-bar" data-tags="toolbar button icon activity bar" data-title="activity bar: what each button does">
       <h2>Activity Bar: What Each Button Does <a class="anchor" href="#activity-bar" aria-label="Link to section">#</a></h2>
-      <p>The Activity Bar is the narrow vertical strip on the far left. From top to bottom:</p>
-<p><strong>Top group:</strong></p>
-<ol><li><strong>Full Network</strong> (triangle/graph icon) -- Shows all nodes and edges. This is the default view.</li></ol>
-<ol><li><strong>Filtered Views</strong> -- One button per node type in your taxonomy. For example, if you have Person and Concept types, you get a People view and a Concepts view. These are generated dynamically from your taxonomy, not hardcoded.</li></ol>
-<ol><li><strong>Toggle Sidebar</strong> (panel icon) -- Shows or hides the left Explorer sidebar.</li></ol>
-<ol><li><strong>Help</strong> (question mark icon) -- Opens the searchable help panel overlay.</li></ol>
-<p><strong>Bottom group:</strong></p>
-<ol><li><strong>Edit Taxonomy</strong> (list icon) -- Re-opens the taxonomy wizard to modify the current map's structure (node types, categories, phases, edge types).</li></ol>
-<ol><li><strong>Settings</strong> (gear icon) -- Opens the Settings modal for theme, stream colours, and edge colours.</li></ol>
+      <p>The Activity Bar is the narrow vertical strip on the far left. Its buttons fall into two groups — a top group for views and canvas tools, and a bottom group for map-wide actions. A few buttons are hidden on iPhone, where the layout is condensed.</p>
+<p><strong>Top group — views and canvas tools:</strong></p>
+<ol><li><strong>Full Network</strong> (graph icon) -- Shows all nodes and edges. The default view.</li></ol>
+<ol><li><strong>Filtered Views</strong> -- One button per node type in your taxonomy (for example a People view and a Concepts view). These are generated dynamically from the template, not hardcoded, and each shows that type's own icon or initial.</li></ol>
+<ol><li><strong>Text Outline</strong> (outline icon) -- Switches to the <strong>Textmap</strong>: the same map rendered as a navigable nested outline. The default on iPhone, one tap away everywhere else. See "Textmap: The Outline View".</li></ol>
+<ol><li><strong>Toggle Sidebar</strong> (panel icon) -- Shows or hides the left Explorer sidebar. (Mac and iPad.)</li></ol>
+<ol><li><strong>Properties</strong> (properties icon) -- Shows or hides the Properties inspector for the selected node. (Mac and iPad.)</li></ol>
+<ol><li><strong>Notes</strong> (notes icon) -- Shows or hides the Notes editor for the selected node. (Mac and iPad.)</li></ol>
+<ol><li><strong>Fit to View</strong> -- Re-frames the canvas so the whole map is visible.</li></ol>
+<ol><li><strong>Export Image</strong> -- Exports the current canvas as an image.</li></ol>
+<ol><li><strong>Expand / Collapse level</strong> -- A vertical stepper (<code>+</code> / depth / <code>−</code>) that reveals or hides the graph one level of depth at a time; double-click the depth label to toggle fully expanded or fully collapsed. See "Collapse and Expand to Level".</li></ol>
+<ol><li><strong>Layout</strong> (layout icon) -- Opens a popover of layout presets: the plain force arrangement, or arrangements driven by a classifier's axis. "Reset Classifiers" clears any axis/region layouts. Your chosen layout is saved with the map.</li></ol>
+<p><strong>Bottom group — map-wide actions:</strong></p>
+<ol><li><strong>Network Analysis</strong> (analysis icon) -- Opens the metrics, node rankings, communities, and path-finder panel. (Mac and iPad.) See "Network Analysis Tools".</li></ol>
+<ol><li><strong>Edit Taxonomy</strong> (list icon) -- Re-opens the taxonomy wizard to modify the current map's structure (node types, classifiers, edge types).</li></ol>
+<ol><li><strong>Explode / Collapse graph</strong> -- Spreads the nodes apart for an overview, or pulls them back together.</li></ol>
+<ol><li><strong>Settings</strong> (gear icon) -- Opens Settings for theme and colour customisation.</li></ol>
+<ol><li><strong>Help &amp; FAQ</strong> (question-mark icon) -- Opens this searchable help panel.</li></ol>
     </article>
 
     <article class="section" id="nodes" data-tags="node add edit create thinker concept person delete" data-title="adding and editing nodes">
       <h2>Adding and Editing Nodes <a class="anchor" href="#nodes" aria-label="Link to section">#</a></h2>
       <p><strong>Adding a node:</strong></p>
 <ol><li>In the sidebar, click the "+ [Type]" button for the node type you want (e.g. "+ Person", "+ Concept").</li><li>A modal appears asking for:</li></ol>
-<p>   - Type (if multiple types are defined)<br>   - Name (required)<br>   - Stream (category)<br>   - Generation (time period)<br>   - Any required or select-type custom fields</p>
+<p>   - Type (if multiple types are defined)<br>   - Name (required)<br>   - A dropdown for each classifier your template defines (e.g. domain, decade, status)<br>   - Tags, and any required or select-type custom fields</p>
 <ol><li>Click "Add" to place the node on the canvas.</li></ol>
 <p>The node is automatically selected after creation so you can immediately edit its properties.</p>
 <p><strong>Editing a node:</strong></p>
-<ol><li>Click a node on the canvas or in the sidebar node list.</li><li>The Properties panel opens on the right.</li><li>Edit the name directly in the header input field.</li><li>Change the stream or generation using the dropdown selectors.</li><li>Edit any custom fields defined by your taxonomy (text inputs, selects, textareas).</li><li>Changes auto-save with a short debounce delay.</li></ol>
+<ol><li>Click a node on the canvas or in the sidebar node list.</li><li>The Properties panel opens on the right.</li><li>Edit the name directly in the header input field.</li><li>Change any classifier value using its dropdown selector.</li><li>Edit any custom fields defined by your taxonomy (text inputs, selects, textareas).</li><li>Changes auto-save with a short debounce delay.</li></ol>
 <p><strong>Node notes:</strong><br>Click "Edit Notes" in the Properties panel header to open the Notes pane below the canvas. This is a live markdown editor -- type headings (#), bold (<strong>text</strong>), italic (<em>text</em>), code (<code>text</code>), lists (- item), and blockquotes (&gt; text). Notes auto-save.</p>
 <p><strong>Tip:</strong> The node type badge in the Properties header shows whether a node is a circle type (thinker) or rectangle type (concept). Node size can be driven by a select field if configured in the taxonomy (e.g. eminence controls circle size).</p>
     </article>
@@ -155,7 +165,7 @@
       <p>You can use any LLM (Claude, GPT-4, Llama, etc.) to generate concept map content that you then open in ConceptMapper. The workflow is: design your taxonomy in the app, export or describe it to the LLM, and have the LLM produce a .cm file you can open.</p>
 <p><strong>Step 1: Design your taxonomy</strong></p>
 <p>Use the Taxonomy Wizard (New Taxonomy on the start screen) to define:</p>
-<ul><li>Node types with their fields (e.g. Person with importance, dates, tags)</li><li>Streams/categories with colours</li><li>Phases/generations with labels</li><li>Edge types with styles</li></ul>
+<ul><li>Node types with their fields (e.g. Person with importance, dates, tags)</li><li>Classifiers -- the grouping dimensions your domain needs (e.g. domain, decade, region, status), each with allowed values and an optional colour palette</li><li>Edge types with styles</li></ul>
 <p>Save it as a template (.cmt) for reuse.</p>
 <p><strong>Step 2: Export the template for the LLM</strong></p>
 <p>Open your .cmt file in a text editor -- it is plain JSON. Copy the full contents. This gives the LLM the exact structure it needs to produce compatible output.</p>
@@ -167,20 +177,20 @@
 <p>Please analyse the following text and produce a .cm concept map file. The output must be a markdown file using EXACTLY this format:</p>
 <p><strong>CRITICAL: Every property line inside a fenced code block MUST use "key: value" format with a colon.</strong> Do not omit the colon — the parser requires it.</p>
 <p>Sections required:</p>
-<ol><li><strong>## Generations</strong> -- a markdown table with columns: Gen, Period, Label, Attention Space Count</li><li><strong>## Streams</strong> -- a markdown table with columns: Stream ID, Name, Colour, Description</li><li><strong>## [Type] Nodes</strong> -- one section per node type (e.g. "## Task Nodes", "## Person Nodes"). Each node is a fenced code block (```) containing key: value pairs. Required keys: id, name, generation, stream. Include ALL fields from the template's node type definition. End with notes: if applicable.</li><li><strong>## Edges</strong> -- fenced code blocks with "from: [id] to: [id] type: [edge_type]" lines, each followed by "  note: [description]"</li></ol>
-<p>Use the stream IDs, generation numbers, and edge types defined in the template. Assign each node to the most appropriate stream and generation.</p>
+<ol><li><strong>## [Type] Nodes</strong> -- one section per node type (e.g. "## Person Nodes", "## Concept Nodes"). Each node is a fenced code block (``<code>) containing key: value pairs. Required keys: id and name. Then add the template's classifier fields, using each classifier's id as the key (e.g. </code>domain: systems_cybernetics`), plus any other fields the node type defines. End with notes: if applicable.</li><li><strong>## Edges</strong> -- fenced code blocks with "from: [id] to: [id] type: [edge_type]" lines, each followed by "  note: [description]"</li><li><strong>## Notes</strong> (optional) -- free-form markdown for map-level notes.</li></ol>
+<p>Use the classifier ids and their allowed values, and the edge types, exactly as defined in the template. Assign each node the most appropriate classifier values.</p>
 <p>Here is the text to analyse:</p>
 <p>[paste your source text]</p>
 <hr>
 <p><strong>Step 4: Open the result</strong></p>
 <p>Save the LLM's output as a .cm file and open it in ConceptMapper (File &gt; Open or Cmd+O). The app parses the markdown format and renders the concept map.</p>
 <p><strong>Tips for better results:</strong></p>
-<ul><li>Include the full .cmt template so the LLM knows exact field names and options.</li><li>Ask the LLM to use the specific stream IDs and generation numbers from the template.</li><li>For select-type fields (like importance or status), tell the LLM to use only the defined options.</li><li>Review and edit the generated .cm file before opening -- fix any formatting issues.</li><li>Longer, more detailed source text produces richer maps.</li><li>You can iteratively add content: open the generated map, then manually add nodes and edges the LLM missed.</li></ul>
+<ul><li>Include the full .cmt template so the LLM knows exact field names and options.</li><li>Ask the LLM to use the classifier ids and their allowed values from the template.</li><li>For select-type fields (like importance or status), tell the LLM to use only the defined options.</li><li>Review and edit the generated .cm file before opening -- fix any formatting issues.</li><li>Longer, more detailed source text produces richer maps.</li><li>You can iteratively add content: open the generated map, then manually add nodes and edges the LLM missed.</li></ul>
 <p><strong>Example node block format:</strong></p>
 <pre><code>id:               my_node_id
 name:             My Node Name
-generation:       2
-stream:           my_stream
+domain:           systems_cybernetics
+decade:           1970s
 priority:         high
 status:           active
 tags:             keyword1, keyword2
@@ -376,14 +386,14 @@ from: node_c to: node_d type: rivalry
 
     <article class="section" id="faq" data-tags="faq question help how why what" data-title="frequently asked questions">
       <h2>Frequently Asked Questions <a class="anchor" href="#faq" aria-label="Link to section">#</a></h2>
-      <p><strong>Q: How do I get started with a blank map?</strong><br>A: Click "New Taxonomy" on the start screen and follow the 6-step wizard. At minimum, give it a title, keep the default node types (Person and Concept), add at least one stream/category, and one generation.</p>
+      <p><strong>Q: How do I get started with a blank map?</strong><br>A: Click "New Taxonomy" on the start screen and follow the 6-step wizard. At minimum, give it a title, keep the default node types (Person and Concept), and define at least one classifier with a couple of values.</p>
 <p><strong>Q: What happened to streams and generations? My old maps used them.</strong><br>A: They are no longer privileged dimensions. The current model uses generic <strong>classifiers</strong> defined entirely in the template — pick whatever dimensions your domain needs (e.g. domain, era, region, status). Old .cm files are migrated on load: any <code>stream:</code> or <code>generation:</code> keys are lifted into classifier fields, and old "Streams" / "Generations" sections become Notes. Your maps still work.</p>
 <p><strong>Q: Can I rename or redefine node types after creating a map?</strong><br>A: Yes. Click the taxonomy/list icon at the bottom of the Activity Bar to re-open the wizard in edit mode. Changes to the taxonomy apply to the existing map.</p>
 <p><strong>Q: How do I delete a node?</strong><br>A: Node deletion is not yet available through the UI. You can edit the .cm file directly (it is JSON) and remove the node entry.</p>
 <p><strong>Q: How do I delete an edge?</strong><br>A: Edge deletion is not yet available through the UI. You can edit the .cm file directly.</p>
 <p><strong>Q: Where are my files saved?</strong><br>A: When you open or create a .cm file, the app auto-saves to that file path with a 2-second debounce after each change. The save indicator in the status bar confirms when a save occurs.</p>
 <p><strong>Q: Can I use AI to populate a concept map?</strong><br>A: Yes. Design your taxonomy in the app, export the .cmt template, and use any LLM (Claude, GPT-4, etc.) to generate a .cm file from your source text. See "Using an LLM to Map Content" in this help for detailed instructions and a prompt template.</p>
-<p><strong>Q: What does "Save as Template" do?</strong><br>A: It stores the current taxonomy structure (node types, streams, generations) without any nodes or edges. The template appears on the start screen for quick reuse when creating new maps.</p>
+<p><strong>Q: What does "Save as Template" do?</strong><br>A: It stores the current taxonomy structure (node types, classifiers, edge types) without any nodes or edges. The template appears on the start screen for quick reuse when creating new maps.</p>
 <p><strong>Q: How do I customise node colours?</strong><br>A: Node colours come from the classifier marked as colour-providing in the template (typically the first one). Each classifier value has its own colour; change it in the template via the Taxonomy wizard.</p>
 <p><strong>Q: If I edit the taxonomy in the app, where does it save?</strong><br>A: Silently — no dialog. The app first looks for the .cmt template <em>next to the map</em> (e.g. <code>Maps/my-domain/my-domain.cmt</code>); if it finds one there, it overwrites that file. Otherwise it writes to your shared Templates folder. Either way, the next time you open the map, your edits are in place.</p>
 <p><strong>Q: Can I have more than two node types?</strong><br>A: Yes. In the taxonomy wizard (Step 2), click "+ Add Type" to create as many node types as you need. Each can have its own shape, icon, and custom fields.</p>
@@ -426,7 +436,7 @@ from: node_c to: node_d type: rivalry
     <footer class="site-footer">
       <div class="wrap">
         <p>Concept Mapper 1.0 · Support: <a href="mailto:dromologue@gmail.com">dromologue@gmail.com</a></p>
-        <p class="muted">Documentation and privacy policy for Concept Mapper, a macOS application.</p>
+        <p class="muted"><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms &amp; Conditions</a> · Documentation for Concept Mapper.</p>
       </div>
     </footer>
 </body>
