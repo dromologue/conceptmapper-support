@@ -274,7 +274,7 @@ from: node_c to: node_d type: rivalry
       <h2>Settings: Themes and Colour Customisation <a class="anchor" href="#settings-themes" aria-label="Link to section">#</a></h2>
       <p>Open Settings via the gear icon at the bottom of the Activity Bar.</p>
 <p><strong>Theme</strong><br>Choose from available themes. Each theme changes the background, panel colours, text colours, and accent colours across the entire UI. Themes include dark options (Midnight, Obsidian, Solarized Dark, Nord) and light options (Ivory, Paper).</p>
-<p><strong>Stream Colours</strong><br>Override the default colour for any stream/category. Click the colour swatch to pick a new colour. Click the X button to reset to the taxonomy default.</p>
+<p><strong>Classifier Colours</strong><br>Override the default colour for any classifier value. The app shows one colour group per classifier defined in your template (e.g. Domain Colours, Decade Colours). Click a colour swatch to pick a new colour, or the X button to reset to the taxonomy default.</p>
 <p><strong>Edge Type Colours</strong><br>Override colours for specific edge types (e.g. make "rivalry" edges bright red, "alliance" edges blue). Only edge types present in your current map appear here.</p>
 <p>All colour customisations persist across sessions via local storage.</p>
 <p>(LLM configuration will be available in a future release.)</p>
@@ -288,10 +288,10 @@ from: node_c to: node_d type: rivalry
 <p>The app auto-saves to the source .cm file as you make changes (with a short debounce).</p>
 <p><strong>.cmt (Concept Map Template)</strong> -- A JSON file containing the taxonomy: title, description, classifiers, node_types, edge_types. The template ALWAYS owns the structure — the .cm map file never carries node-type or classifier definitions of its own. A .cmt can live either in your shared Templates folder or right next to its map (e.g. <code>Maps/my-domain/my-domain.cmt</code> alongside <code>Maps/my-domain/my-domain.cm</code>); the app resolves it from the path referenced in the .cm header.</p>
 <p><strong>.json</strong> -- The app can open plain .json files if they follow the concept map data schema.</p>
-<p><strong>Markdown Export</strong> -- Use File &gt; Export (Cmd+Shift+E) to export a human-readable markdown version of your map, with tables for generations and streams, fenced code blocks for nodes, and structured edge listings.</p>
+<p><strong>Markdown Export</strong> -- Use File &gt; Export (Cmd+Shift+E) to export a human-readable markdown version of your map: nodes grouped by type in fenced <code>key: value</code> code blocks (carrying each node's classifier values, tags, and fields), followed by the edges and any notes. This is the same structured-markdown format the app saves as .cm.</p>
 <p><strong>Image Export</strong> -- Use File &gt; Export Image (Cmd+E) to save the current canvas view as a PNG image.</p>
 <p><strong>Opening files:</strong></p>
-<ul><li>File &gt; Open (Cmd+O) or the "Open File" button on the start screen</li><li>The app accepts .cm, .cmt, and .json files</li><li>Legacy markdown (.cm) files from older versions are automatically migrated to the new JSON format</li></ul>
+<ul><li>File &gt; Open (Cmd+O) or the "Open File" button on the start screen</li><li>The app accepts .cm, .cmt, and .json files</li><li>Older .cm files from earlier versions — including the retired <code>stream:</code> / <code>generation:</code> keys — are automatically migrated to the current classifier model when opened</li></ul>
     </article>
 
     <article class="section" id="keyboard-shortcuts" data-tags="keyboard shortcut hotkey key cmd command" data-title="keyboard shortcuts">
@@ -389,7 +389,7 @@ from: node_c to: node_d type: rivalry
       <p><strong>Q: How do I get started with a blank map?</strong><br>A: Click "New Taxonomy" on the start screen and follow the 6-step wizard. At minimum, give it a title, keep the default node types (Person and Concept), and define at least one classifier with a couple of values.</p>
 <p><strong>Q: What happened to streams and generations? My old maps used them.</strong><br>A: They are no longer privileged dimensions. The current model uses generic <strong>classifiers</strong> defined entirely in the template — pick whatever dimensions your domain needs (e.g. domain, era, region, status). Old .cm files are migrated on load: any <code>stream:</code> or <code>generation:</code> keys are lifted into classifier fields, and old "Streams" / "Generations" sections become Notes. Your maps still work.</p>
 <p><strong>Q: Can I rename or redefine node types after creating a map?</strong><br>A: Yes. Click the taxonomy/list icon at the bottom of the Activity Bar to re-open the wizard in edit mode. Changes to the taxonomy apply to the existing map.</p>
-<p><strong>Q: How do I delete a node?</strong><br>A: Node deletion is not yet available through the UI. You can edit the .cm file directly (it is JSON) and remove the node entry.</p>
+<p><strong>Q: How do I delete a node?</strong><br>A: Node deletion is not yet available through the UI. You can edit the .cm file directly (it is plain-text markdown) and remove the node's fenced block.</p>
 <p><strong>Q: How do I delete an edge?</strong><br>A: Edge deletion is not yet available through the UI. You can edit the .cm file directly.</p>
 <p><strong>Q: Where are my files saved?</strong><br>A: When you open or create a .cm file, the app auto-saves to that file path with a 2-second debounce after each change. The save indicator in the status bar confirms when a save occurs.</p>
 <p><strong>Q: Can I use AI to populate a concept map?</strong><br>A: Yes. Design your taxonomy in the app, export the .cmt template, and use any LLM (Claude, GPT-4, etc.) to generate a .cm file from your source text. See "Using an LLM to Map Content" in this help for detailed instructions and a prompt template.</p>
@@ -398,13 +398,13 @@ from: node_c to: node_d type: rivalry
 <p><strong>Q: If I edit the taxonomy in the app, where does it save?</strong><br>A: Silently — no dialog. The app first looks for the .cmt template <em>next to the map</em> (e.g. <code>Maps/my-domain/my-domain.cmt</code>); if it finds one there, it overwrites that file. Otherwise it writes to your shared Templates folder. Either way, the next time you open the map, your edits are in place.</p>
 <p><strong>Q: Can I have more than two node types?</strong><br>A: Yes. In the taxonomy wizard (Step 2), click "+ Add Type" to create as many node types as you need. Each can have its own shape, icon, and custom fields.</p>
 <p><strong>Q: What is the "Size driven by" option in the node type configuration?</strong><br>A: If a node type has a select-type field (e.g. "Importance" with options major, minor, etc.), you can designate that field to control the visual size of nodes on the canvas. Higher-ranked options produce larger nodes.</p>
-<p><strong>Q: How do I share a map with someone?</strong><br>A: Send them the .cm file. They can open it in ConceptMapper. The file is self-contained JSON. You can also export a markdown version or a PNG image for people who do not have the app.</p>
+<p><strong>Q: How do I share a map with someone?</strong><br>A: Send them the .cm file together with its .cmt template (the .cm references the template by name). They can open it in ConceptMapper — the .cm is plain-text markdown. For people who do not have the app, export a PNG image instead.</p>
 <p><strong>Q: What happens if I close the app without saving?</strong><br>A: If you opened a file, the app auto-saves changes as you work (2-second debounce). If you created a new taxonomy and never saved the file, the data may be lost.</p>
     </article>
 
     <article class="section" id="troubleshooting" data-tags="trouble error problem fix issue bug not working" data-title="troubleshooting">
       <h2>Troubleshooting <a class="anchor" href="#troubleshooting" aria-label="Link to section">#</a></h2>
-      <p><strong>"No nodes found" error when opening a file</strong><br>The file may not be in a recognised format. ConceptMapper expects either a v2 JSON data file (.cm) or a legacy structured markdown file. Check that the file has the correct structure.</p>
+      <p><strong>"No nodes found" error when opening a file</strong><br>The file may not be in a recognised format. ConceptMapper expects a structured-markdown .cm map file or a JSON .cmt template (older .cm files are migrated automatically on open). Check that the file has the correct structure.</p>
 <p><strong>Canvas is blank after creating a taxonomy</strong><br>This is expected -- a new taxonomy has no nodes yet. Use the sidebar's "+ [Type]" buttons to add nodes, or use Map Text to populate from a text source.</p>
 <p><strong>Nodes appear in unexpected positions</strong><br>Layout is force-directed; positions emerge from the edges. If you have classifier-driven layout enabled in the template, the relevant classifier value determines a node's region. Check the node's classifier values in the Properties panel.</p>
 <p><strong>Auto-save is not working</strong><br>Auto-save requires that the file was opened from disk (giving the app a file path to write to). If you are working with an unsaved new map, use File &gt; Save As (Cmd+S) to establish a file path first.</p>
