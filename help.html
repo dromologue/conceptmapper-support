@@ -50,6 +50,7 @@
 <li><a href="#file-formats">File Formats: .cm, .cmt, .json, and Markdown Export</a></li>
 <li><a href="#keyboard-shortcuts">Keyboard Shortcuts</a></li>
 <li><a href="#network-analysis">Network Analysis Tools</a></li>
+<li><a href="#textmap">Textmap: The Outline View</a></li>
 <li><a href="#faq">Frequently Asked Questions</a></li>
 <li><a href="#troubleshooting">Troubleshooting</a></li></ul>
       </nav>
@@ -355,6 +356,22 @@ from: node_c to: node_d type: rivalry
 <ul><li><em>k=1</em> — The outermost shell. These nodes are connected to only one part of the network and are the first to be "peeled away."</li><li><em>k=2</em> — Each of these nodes has at least 2 connections to other k≥2 nodes.</li><li><em>Highest k</em> — The innermost core. These are the most tightly interconnected concepts — the structural bedrock of the network. Every node in the k-core is connected to at least k other k-core nodes.</li></ul>
 <p><em>Interpretation:</em> The innermost core reveals the foundational cluster of ideas that everything else builds upon. In an intellectual history, these are the ideas and thinkers that are so interconnected they form a self-reinforcing system. Peripheral nodes (k=1) are recent additions, outliers, or specialised concepts connected to only one thread.</p>
 <p><em>Practical use:</em> Filter your rankings by k-core to identify the structural foundation vs. the periphery. If a concept you consider important has a low k-core number, it may be under-connected in your taxonomy.</p>
+    </article>
+
+    <article class="section" id="textmap" data-tags="textmap outline list text navigate iphone mobile tree" data-title="textmap: the outline view">
+      <h2>Textmap: The Outline View <a class="anchor" href="#textmap" aria-label="Link to section">#</a></h2>
+      <p>The <strong>Textmap</strong> is an alternative to the visual canvas: it renders the same concept map as a navigable nested <strong>outline</strong>. It is the default on small screens (iPhone), where the visual graph is hard to read, and it is available on every platform from the outline button in the Activity Bar.</p>
+<p><strong>What you see</strong><br>Each node is a row. Expand a row (▸) to reveal that node's connections, grouped by relationship:</p>
+<ul><li>Outgoing directed relationships appear as "Label →".</li><li>Incoming directed relationships appear as "← Label".</li><li>Undirected relationships appear under their plain label.</li></ul>
+<p>Each group shows a count, and every connected node is itself a row you can expand — so you can walk the entire graph by outline.</p>
+<p><strong>Navigating</strong></p>
+<ul><li><strong>Tap a node name</strong> to select it — the Properties panel and Notes work exactly as they do on the canvas.</li><li><strong>Tap the disclosure arrow</strong> to expand or collapse a node's connections in place.</li><li><strong>Tap the focus control (⤢)</strong> to re-root the outline on that node. A breadcrumb trail at the top records your path; tap any crumb (or "All roots") to jump back.</li></ul>
+<p><strong>Roots</strong><br>The top level lists the map's natural roots — nodes with no incoming relationship. If the map has none (for example a fully cyclic or purely undirected map), every node is listed at the top level, and you focus into whichever one you want to explore from.</p>
+<p><strong>Loops</strong><br>Concept maps contain cycles. If a connection points back to a node already above you in the current path, the Textmap shows it as a <strong>loop link (↺)</strong> rather than expanding it forever — tap it to jump to that node. This keeps navigation finite no matter how tangled the graph.</p>
+<p><strong>Notes on a row</strong><br>Every row has a notes button. Tap it to read and edit that node's notes inline, without leaving the outline. Notes open as rendered markdown when they already exist; tap <strong>Edit</strong> for a plain textarea and <strong>Preview</strong> to render it again. Edits save into the map automatically (debounced), exactly as the canvas Notes panel saves. Tap <strong>Attach .md</strong> to back the notes with an external markdown file — once attached, that file is the source of truth and your edits write straight through to it; <strong>Detach</strong> keeps the text but unlinks the file. When a row's notes are collapsed, a one-line preview of the first line sits beneath the row, so you can skim a whole branch without opening each note.</p>
+<p><strong>Adding nodes</strong><br>The outline has an add-node button (＋) in its header, so you can build a map from the Textmap alone — useful on a phone, where the visual canvas isn't practical. It opens the same Add Node form as the canvas: choose a node type from the template, name it, set classifier values, tags, and any template fields, and optionally link it to existing nodes as you create it.</p>
+<p><strong>Your chosen layout is saved with the map</strong><br>The layout you pick — the plain force arrangement, or one driven by a classifier's axis — is written into the .cm file itself as a small <code>&lt;!-- view: … --&gt;</code> line, alongside any per-classifier axis choices. Re-open the map, on any platform, and it returns to that arrangement instead of resetting to the default force layout. The map carries its preferred presentation with it, the same way it carries its nodes and notes.</p>
+<p><strong>Why it exists</strong><br>A large graph is unreadable on a phone and often busy even on a desktop. The Textmap trades spatial layout for precise, linear navigation: follow one thread of relationships at a time, with the structure always legible as indented text.</p>
     </article>
 
     <article class="section" id="faq" data-tags="faq question help how why what" data-title="frequently asked questions">
