@@ -16,6 +16,7 @@
         <a class="brand" href="index.html"><img class="brand-icon" src="images/icon.png" alt=""> Concept Mapper</a>
         <nav>
           <a href="index.html">Overview</a>
+          <a href="changelog.html">What&rsquo;s New</a>
           <a href="help.html" class="on">Help &amp; Support</a>
           <a href="privacy.html">Privacy</a>
           <a href="terms.html">Terms</a>
@@ -50,10 +51,13 @@
 <li><a href="#settings-themes">Settings: Themes and Colour Customisation</a></li>
 <li><a href="#file-formats">File Formats: .cm, .cmt, .json, and Markdown Export</a></li>
 <li><a href="#keyboard-shortcuts">Keyboard Shortcuts</a></li>
+<li><a href="#search">Search: All Attributes &amp; Exact Phrases [New in v1.2]</a></li>
 <li><a href="#network-analysis">Network Analysis Tools</a></li>
 <li><a href="#textmap">Textmap: The Outline View</a></li>
 <li><a href="#faq">Frequently Asked Questions</a></li>
-<li><a href="#troubleshooting">Troubleshooting</a></li></ul>
+<li><a href="#second-brain">Second Brain: Scanning Folders &amp; Workflowy Integration [New in v1.2]</a></li>
+<li><a href="#troubleshooting">Troubleshooting</a></li>
+<li><a href="#license">License</a></li></ul>
       </nav>
       <div class="content">
     <article class="section" id="getting-started" data-tags="new begin first intro start overview" data-title="getting started">
@@ -84,9 +88,9 @@
     <article class="section" id="workspace-layout" data-tags="layout ui interface screen panel area" data-title="the workspace layout">
       <h2>The Workspace Layout <a class="anchor" href="#workspace-layout" aria-label="Link to section">#</a></h2>
       <p>The app follows a VS Code-inspired layout with five main areas:</p>
-<p><strong>Title Bar</strong> (top) -- Shows the map title and a search field. Use the search to find nodes by name (Cmd+K to focus).</p>
+<p><strong>Title Bar</strong> (top) -- Shows the map title and a search field. Use the search to find nodes across all taxonomy attributes — name, node type, tags, classifier values, property values, and inline notes (Cmd+K to focus). Wrap a phrase in double quotes for exact matching: <code>"double-loop learning"</code>. [New in v1.2]</p>
 <p><strong>Activity Bar</strong> (left edge, narrow icon strip) -- Vertical toolbar with view mode buttons at the top and settings/taxonomy at the bottom:</p>
-<ul><li>Network icon: Full view (all nodes)</li><li>Filtered view icons: One per node type defined in your taxonomy (dynamically generated, not hardcoded)</li><li>Sidebar icon: Toggle the sidebar panel</li><li>(Map Text and Chat icons will appear in a future release when built-in LLM support is enabled)</li><li>Help icon: Open the searchable help panel</li><li>Taxonomy icon (bottom): Edit the current taxonomy structure</li><li>Gear icon (bottom): Open Settings</li></ul>
+<ul><li>Network icon: Full view (all nodes)</li><li>Filtered view icons: One per node type defined in your taxonomy (dynamically generated, not hardcoded)</li><li>Sidebar icon: Toggle the sidebar panel</li><li>Second Brain icon (brain): Open the Second Brain panel for folder scanning and Workflowy integration (macOS only) [New in v1.2]</li><li>(Map Text and Chat icons will appear in a future release when built-in LLM support is enabled)</li><li>Help icon: Open the searchable help panel</li><li>Taxonomy icon (bottom): Edit the current taxonomy structure</li><li>Gear icon (bottom): Open Settings</li></ul>
 <p><strong>Sidebar</strong> (left panel) -- The Explorer panel showing:</p>
 <ul><li>Action buttons to add nodes (one per node type) and edges</li><li>A collapse/expand-to-level stepper (see "Collapse and Expand to Level")</li><li>One collapsible filter section per classifier defined in the template</li><li>A Tags section (open by default) when any node uses tags</li><li>A collapsible Nodes list with a filter/search box</li></ul>
 <p><strong>Canvas</strong> (centre) -- The main interactive graph visualization. Pan by dragging, zoom with scroll wheel or pinch, Shift+drag for marquee zoom.</p>
@@ -97,22 +101,23 @@
 
     <article class="section" id="activity-bar" data-tags="toolbar button icon activity bar" data-title="activity bar: what each button does">
       <h2>Activity Bar: What Each Button Does <a class="anchor" href="#activity-bar" aria-label="Link to section">#</a></h2>
-      <p>The Activity Bar is the narrow vertical strip on the far left. Its buttons fall into two groups — a top group for views and canvas tools, and a bottom group for map-wide actions. A few buttons are hidden on iPhone, where the layout is condensed.</p>
+      <p>The Activity Bar is the narrow vertical strip on the far left. Its buttons fall into two groups — a top group for views and canvas tools, and a bottom group for map-wide actions.</p>
 <p><strong>Top group — views and canvas tools:</strong></p>
 <ol><li><strong>Full Network</strong> (graph icon) -- Shows all nodes and edges. The default view.</li></ol>
 <ol><li><strong>Filtered Views</strong> -- One button per node type in your taxonomy (for example a People view and a Concepts view). These are generated dynamically from the template, not hardcoded, and each shows that type's own icon or initial.</li></ol>
-<ol><li><strong>Text Outline</strong> (outline icon) -- Switches to the <strong>Textmap</strong>: the same map rendered as a navigable nested outline. The default on iPhone, one tap away everywhere else. See "Textmap: The Outline View".</li></ol>
-<ol><li><strong>Toggle Sidebar</strong> (panel icon) -- Shows or hides the left Explorer sidebar. (Mac and iPad.)</li></ol>
-<ol><li><strong>Properties</strong> (properties icon) -- Shows or hides the Properties inspector for the selected node. (Mac and iPad.)</li></ol>
-<ol><li><strong>Notes</strong> (notes icon) -- Shows or hides the Notes editor for the selected node. (Mac and iPad.)</li></ol>
+<ol><li><strong>Text Outline</strong> (outline icon) -- Switches to the <strong>Textmap</strong>: the same map rendered as a navigable nested outline, one click away from the visual canvas. See "Textmap: The Outline View".</li></ol>
+<ol><li><strong>Toggle Sidebar</strong> (panel icon) -- Shows or hides the left Explorer sidebar.</li></ol>
+<ol><li><strong>Properties</strong> (properties icon) -- Shows or hides the Properties inspector for the selected node.</li></ol>
+<ol><li><strong>Notes</strong> (notes icon) -- Shows or hides the Notes editor for the selected node.</li></ol>
 <ol><li><strong>Fit to View</strong> -- Re-frames the canvas so the whole map is visible.</li></ol>
 <ol><li><strong>Export Image</strong> -- Exports the current canvas as an image.</li></ol>
 <ol><li><strong>Expand / Collapse level</strong> -- A vertical stepper (<code>+</code> / depth / <code>−</code>) that reveals or hides the graph one level of depth at a time; double-click the depth label to toggle fully expanded or fully collapsed. See "Collapse and Expand to Level".</li></ol>
 <ol><li><strong>Layout</strong> (layout icon) -- Opens a popover of layout presets: the plain force arrangement, or arrangements driven by a classifier's axis. "Reset Classifiers" clears any axis/region layouts. Your chosen layout is saved with the map.</li></ol>
 <p><strong>Bottom group — map-wide actions:</strong></p>
-<ol><li><strong>Network Analysis</strong> (analysis icon) -- Opens the metrics, node rankings, communities, and path-finder panel. (Mac and iPad.) See "Network Analysis Tools".</li></ol>
+<ol><li><strong>Network Analysis</strong> (analysis icon) -- Opens the metrics, node rankings, communities, and path-finder panel. See "Network Analysis Tools".</li></ol>
 <ol><li><strong>Edit Taxonomy</strong> (list icon) -- Re-opens the taxonomy wizard to modify the current map's structure (node types, classifiers, edge types).</li></ol>
 <ol><li><strong>Explode / Collapse graph</strong> -- Spreads the nodes apart for an overview, or pulls them back together.</li></ol>
+<ol><li><strong>Second Brain</strong> (brain icon, macOS only) [New in v1.2] -- Opens the Second Brain panel for scanning markdown folder collections and linking nodes to Workflowy outlines. See "Second Brain: Scanning Folders &amp; Workflowy Integration".</li></ol>
 <ol><li><strong>Settings</strong> (gear icon) -- Opens Settings for theme and colour customisation.</li></ol>
 <ol><li><strong>Help &amp; FAQ</strong> (question-mark icon) -- Opens this searchable help panel.</li></ol>
     </article>
@@ -127,6 +132,9 @@
 <p><strong>Editing a node:</strong></p>
 <ol><li>Click a node on the canvas or in the sidebar node list.</li><li>The Properties panel opens on the right.</li><li>Edit the name directly in the header input field.</li><li>Change any classifier value using its dropdown selector.</li><li>Edit any custom fields defined by your taxonomy (text inputs, selects, textareas).</li><li>Changes auto-save with a short debounce delay.</li></ol>
 <p><strong>Node notes:</strong><br>Click "Edit Notes" in the Properties panel header to open the Notes pane below the canvas. This is a live markdown editor -- type headings (#), bold (<strong>text</strong>), italic (<em>text</em>), code (<code>text</code>), lists (- item), and blockquotes (&gt; text). Notes auto-save.</p>
+<p><strong>Node icon [New in v1.2]:</strong><br>You can assign an emoji icon to any node. The icon appears on the canvas overlaid on the node shape.</p>
+<ol><li>Select a node.</li><li>In the Properties panel, click the icon button (shows the current emoji or "—" if none is set).</li><li>Click "Change" to open the emoji picker (20 options).</li><li>Click an emoji to apply it, or click "Clear" to remove the current icon.</li></ol>
+<p>Icons are stored in the node's properties and saved with the map.</p>
 <p><strong>Tip:</strong> The node type badge in the Properties header shows whether a node is a circle type (thinker) or rectangle type (concept). Node size can be driven by a select field if configured in the taxonomy (e.g. eminence controls circle size).</p>
     </article>
 
@@ -299,13 +307,27 @@ from: node_c to: node_d type: rivalry
       <p><strong>File operations:</strong></p>
 <ul><li>Cmd+O -- Open file</li><li>Cmd+S -- Save As</li><li>Cmd+E -- Export as image</li><li>Cmd+Shift+E -- Export concept map (markdown)</li><li>Cmd+N -- New Taxonomy (from menu)</li></ul>
 <p><strong>Navigation:</strong></p>
-<ul><li>Cmd+K -- Focus search field</li><li>Escape -- Cancel edge drawing / close modals</li></ul>
+<ul><li>Cmd+K -- Focus search field (searches name, node type, tags, classifiers, properties, notes; use "quoted phrase" for exact match) [New in v1.2: all-attribute search]</li><li>Escape -- Cancel edge drawing / close modals</li></ul>
 <p><strong>Canvas:</strong></p>
 <ul><li>Click + drag -- Pan</li><li>Scroll wheel / pinch -- Zoom</li><li>Shift + drag -- Marquee zoom to region</li></ul>
 <p><strong>Notes editor:</strong></p>
 <ul><li>Enter -- New line</li><li>Standard text editing shortcuts (Cmd+A, Cmd+C, Cmd+V, etc.)</li></ul>
 <p><strong>General:</strong></p>
 <ul><li>Cmd+? -- Toggle help overlay (native macOS help)</li></ul>
+    </article>
+
+    <article class="section" id="search" data-tags="search find filter query phrase tag classifier attribute exact" data-title="search: all attributes &amp; exact phrases [new in v1.2]">
+      <h2>Search: All Attributes &amp; Exact Phrases [New in v1.2] <a class="anchor" href="#search" aria-label="Link to section">#</a></h2>
+      <p>Press Cmd+K (or click the search field in the title bar) to search the map.</p>
+<p><strong>What is searched:</strong></p>
+<ul><li>Node name</li><li>Node type (e.g. "person", "concept")</li><li>Tags</li><li>Classifier values (e.g. the value "systems" under a "condition" classifier — note: classifier <em>keys</em> are not searched, only their values)</li><li>All custom property values</li><li>Inline notes</li></ul>
+<p><strong>How tokens work:</strong><br>Unquoted words are treated as individual substring tokens. A node matches when every token appears somewhere in its attributes (AND semantics). Tokens are case-insensitive.</p>
+<pre><code>argyris harvard       → nodes where BOTH "argyris" and "harvard" appear
+psychology systems    → nodes with BOTH values present (across any attribute)</code></pre>
+<p><strong>Exact phrase matching:</strong><br>Wrap any phrase in double quotes to require it as a verbatim substring:</p>
+<pre><code>"double-loop learning"   → exact phrase in tags or notes
+"systems thinking" 1923  → exact phrase AND the token "1923"</code></pre>
+<p>Results are limited to 20 matches and returned in map order.</p>
     </article>
 
     <article class="section" id="network-analysis" data-tags="analysis centrality community path metrics degree betweenness influence bridge" data-title="network analysis tools">
@@ -368,9 +390,9 @@ from: node_c to: node_d type: rivalry
 <p><em>Practical use:</em> Filter your rankings by k-core to identify the structural foundation vs. the periphery. If a concept you consider important has a low k-core number, it may be under-connected in your taxonomy.</p>
     </article>
 
-    <article class="section" id="textmap" data-tags="textmap outline list text navigate iphone mobile tree" data-title="textmap: the outline view">
+    <article class="section" id="textmap" data-tags="textmap outline list text navigate tree" data-title="textmap: the outline view">
       <h2>Textmap: The Outline View <a class="anchor" href="#textmap" aria-label="Link to section">#</a></h2>
-      <p>The <strong>Textmap</strong> is an alternative to the visual canvas: it renders the same concept map as a navigable nested <strong>outline</strong>. It is the default on small screens (iPhone), where the visual graph is hard to read, and it is available on every platform from the outline button in the Activity Bar.</p>
+      <p>The <strong>Textmap</strong> is an alternative to the visual canvas: it renders the same concept map as a navigable nested <strong>outline</strong>. It is one click away from the canvas, via the outline button in the Activity Bar.</p>
 <p><strong>What you see</strong><br>Each node is a row. Expand a row (▸) to reveal that node's connections, grouped by relationship:</p>
 <ul><li>Outgoing directed relationships appear as "Label →".</li><li>Incoming directed relationships appear as "← Label".</li><li>Undirected relationships appear under their plain label.</li></ul>
 <p>Each group shows a count, and every connected node is itself a row you can expand — so you can walk the entire graph by outline.</p>
@@ -402,6 +424,25 @@ from: node_c to: node_d type: rivalry
 <p><strong>Q: What happens if I close the app without saving?</strong><br>A: If you opened a file, the app auto-saves changes as you work (2-second debounce). If you created a new taxonomy and never saved the file, the data may be lost.</p>
     </article>
 
+    <article class="section" id="second-brain" data-tags="second brain workflowy folders markdown tags api key scan outline" data-title="second brain: scanning folders &amp; workflowy integration [new in v1.2]">
+      <h2>Second Brain: Scanning Folders &amp; Workflowy Integration [New in v1.2] <a class="anchor" href="#second-brain" aria-label="Link to section">#</a></h2>
+      <p>The Second Brain panel (brain icon in the activity bar, macOS only) connects ConceptMapper to your existing notes and Workflowy outlines.</p>
+<p><strong>Scanning Markdown Folders</strong></p>
+<ol><li>Click the brain icon in the activity bar to open the Second Brain panel.</li><li>Click "+ Add Folder" and choose a directory that contains .md files.</li><li>Click "Scan Now". ConceptMapper walks the directory recursively, extracts #tags from each file, and builds a concept map automatically.</li><li>Folder nodes (F) and Note nodes (N) appear in the canvas. Notes that share at least one tag are connected by dashed "Shares Tag" edges.</li></ol>
+<p>You can add multiple folders. The scan always replaces the current graph — save any open map first with File &gt; Save if needed.</p>
+<p><strong>Workflowy Integration</strong></p>
+<p>Any node in any map can be linked to a Workflowy subtree, which is then displayed read-only in the notes pane. This is macOS only.</p>
+<p><strong>Getting and saving your Workflowy API key:</strong></p>
+<ol><li>Sign in to Workflowy at workflowy.com.</li><li>Open your account settings (click your avatar or initials → Settings).</li><li>Go to the "API" or "Integrations" tab.</li><li>Click "Generate API Key" (or copy the existing key if one is shown).</li><li>Copy the key -- it looks like a long alphanumeric string.</li><li>Back in ConceptMapper: open the Second Brain panel (brain icon in the activity bar), scroll to the "Workflowy API Key" section, paste the key into the field, and click "Save". A "saved" badge appears when the key is stored.</li></ol>
+<p><strong>Linking a node to Workflowy:</strong></p>
+<ol><li>Select a node on the canvas.</li><li>Open the Notes pane (notes icon in the activity bar).</li><li>In the Workflowy section at the bottom, paste the Workflowy node URL. These look like: https://workflowy.com/#/abc123def456</li><li>Press Enter or click the ↓ button. The app fetches the outline and displays it read-only beneath the URL field.</li><li>To edit the linked content, open it in Workflowy directly.</li></ol>
+<p><strong>Where credentials are stored</strong></p>
+<p>Your Workflowy API key is stored in the macOS Keychain -- it never touches disk as a plain text file. Watched folder paths are stored in the app's preferences (UserDefaults) and persist between restarts. Nothing is synced to iCloud or any external service.</p>
+<p><strong>Q: Why is Workflowy integration macOS only?</strong><br>A: The integration uses direct REST API calls to Workflowy from the native layer. The iOS version of ConceptMapper does not include this feature in the current release.</p>
+<p><strong>Q: Will scanning replace my current map?</strong><br>A: Yes. Scanning loads the generated graph as the active map, in the same way as opening a file. Save any unsaved work first.</p>
+<p><strong>Q: Can I edit notes that are linked to Workflowy from within the app?</strong><br>A: No. The outline view is strictly read-only. Use Workflowy to edit content; the app re-fetches on each link.</p>
+    </article>
+
     <article class="section" id="troubleshooting" data-tags="trouble error problem fix issue bug not working" data-title="troubleshooting">
       <h2>Troubleshooting <a class="anchor" href="#troubleshooting" aria-label="Link to section">#</a></h2>
       <p><strong>"No nodes found" error when opening a file</strong><br>The file may not be in a recognised format. ConceptMapper expects a structured-markdown .cm map file or a JSON .cmt template (older .cm files are migrated automatically on open). Check that the file has the correct structure.</p>
@@ -410,6 +451,13 @@ from: node_c to: node_d type: rivalry
 <p><strong>Auto-save is not working</strong><br>Auto-save requires that the file was opened from disk (giving the app a file path to write to). If you are working with an unsaved new map, use File &gt; Save As (Cmd+S) to establish a file path first.</p>
 <p><strong>Theme colours look wrong after updating</strong><br>Try closing and re-opening Settings. Colour overrides are stored in local storage -- clear them by clicking the X button next to each colour override in Settings.</p>
 <p><strong>Filters seem to have no effect</strong><br>If clicking a filter value does not change the visible nodes, the filter may only have one unique value (all nodes match). Check the filter section -- if there is only one option, unchecking it hides all nodes of that type.</p>
+    </article>
+
+    <article class="section" id="license" data-tags="license mit open source copyright source free" data-title="license">
+      <h2>License <a class="anchor" href="#license" aria-label="Link to section">#</a></h2>
+      <p>Concept Mapper is free and open source, released under the <strong>MIT License</strong>.</p>
+<p>Copyright © 2026 dromologue. You may use, copy, modify, and redistribute the software freely, provided the copyright notice and the MIT permission notice are kept with any substantial portion you redistribute. The software is provided "as is", without warranty of any kind.</p>
+<p>The full licence text is in the <code>LICENSE</code> file at the root of the project's source repository.</p>
     </article></div>
     </div>
     <script>
@@ -435,7 +483,7 @@ from: node_c to: node_d type: rivalry
 
     <footer class="site-footer">
       <div class="wrap">
-        <p>Concept Mapper 1.0 · Support: <a href="mailto:dromologue@gmail.com">dromologue@gmail.com</a></p>
+        <p>Concept Mapper 1.3 · Support: <a href="mailto:dromologue@gmail.com">dromologue@gmail.com</a></p>
         <p class="muted"><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms &amp; Conditions</a> · Documentation for Concept Mapper.</p>
       </div>
     </footer>
